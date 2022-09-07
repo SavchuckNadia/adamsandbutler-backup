@@ -22,8 +22,8 @@
 }
 
 @mixin font-size($size) {
-    font-size:$size;
-font-size: ($size / 16px) * 1rem;
+    font-size: $size;
+    font-size: ($size / 16px) * 1rem;
 }
 
 

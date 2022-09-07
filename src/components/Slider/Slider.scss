@@ -1,0 +1,154 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.top-footer-slider {
+    height: 70px;
+    background-color: var(--background-dark-secondary);
+}
+
+.wrap-carousel-footer {
+    position: relative;
+    max-width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    @include mixins.flex(row, normal, center);
+}
+
+.wrap-carousel-footer .swiper-container-horizontal {
+    overflow: hidden;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.swiper {
+    position: static;
+}
+
+.swiper-slide {
+    opacity: .2;
+    transition: opacity .2s cubic-bezier(.45, 0, .55, 1);
+    @include mixins.flex(row, normal, center);
+    width: 165px;
+    width: 88px;
+}
+
+.swiper-slide-active,
+.swiper-slide-prev,
+.swiper-slide-next {
+    opacity: 1;
+}
+
+.swiper-slide .image {
+    height: 100%;
+    max-height: 50px;
+}
+
+.wrap-carousel-footer .wrap-nav {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image {
+    position: relative;
+    width: 100%;
+}
+
+.image:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: "";
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    width: 10.856px;
+    height: 19.024px;
+}
+
+.swiper-button-next {
+    background-image: url(../../assets/svg/arrow-next.svg);
+    right: 0;
+    top: 75%;
+    transform: translateY(-50%);
+}
+
+.swiper-button-prev {
+    background-image: url(../../assets/svg/arrow-prev.svg);
+    left: 0;
+    top: 75%;
+    transform: translateY(-50%);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none;
+}
+
+.swiper-slide .image {
+    height: 100%;
+    max-height: 50px;
+    min-width: 46px;
+}
+
+@media only screen and (min-width: 550px) {
+    .top-footer-slider {
+        height: 90px;
+    }
+
+    .wrap-carousel-footer {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .top-footer-slider {
+        height: 125px;
+    }
+
+    .wrap-carousel-footer {
+        padding: 0 55px;
+        max-width: 770px;
+    }
+}
+
+@media only screen and (min-width: 1034px) {
+    .wrap-carousel-footer {
+        max-width: 990px
+    }
+}
+
+@media only screen and (min-width: 1401px) {
+    .wrap-carousel-footer {
+        padding: 0 70px
+    }
+}
