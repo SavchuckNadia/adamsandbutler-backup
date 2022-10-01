@@ -7,10 +7,8 @@ import virtuosoMemberLogo from "../../assets/svg/header-banner-logo/virtuoso_mem
 import SideBar from "../SideBar/SideBar";
 
 export default function HeaderBanner() {
-
-
   return (
-    <main>
+    <>
       <div className={styles.wrapper}>
         <section className={styles.hero_home}>
           <div
@@ -65,7 +63,11 @@ export default function HeaderBanner() {
 
           <div className={styles.wrap_logo_hero}>
             {logoIcons.map((icon) => (
-              <div key={icon.id} className={styles.image} style={{ width: icon.width }}>
+              <div
+                key={icon.id}
+                className={styles.image}
+                style={{ width: icon.width }}
+              >
                 <img src={icon.icon} alt={icon.alt} />
               </div>
             ))}
@@ -85,7 +87,11 @@ export default function HeaderBanner() {
 
           <div className={styles.wrap_logo_hero_mobile}>
             {logoIcons.map((icon) => (
-              <div key={icon.id} className={styles.image} style={{ width: icon.width }}>
+              <div
+                key={icon.id}
+                className={styles.image}
+                style={{ width: icon.width }}
+              >
                 <img src={icon.icon} alt={icon.alt} />
               </div>
             ))}
@@ -93,12 +99,8 @@ export default function HeaderBanner() {
 
           {/* <button className={styles.speak_to_team}>Chat with us</button> */}
         </section>
-
-
-        
       </div>
       <SideBar />
-
-    </main>
+    </>
   );
 }

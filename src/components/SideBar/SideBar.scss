@@ -3,11 +3,11 @@
 .offcanvas {
     position: fixed;
     top: 0;
-    left: -100%;
+    left: 0%;
     height: 100%;
     width: 100%;
     background-color: var(--background-dark);
-    color:var(--text-primary-light);
+    color: var(--text-primary-light);
     padding: 60px 30px;
     font-family: var(--primary-font-thin);
     font-weight: 300;
@@ -15,9 +15,11 @@
 }
 
 .offcanvas.offcanvas-start {
+    position: fixed;
     top: 0;
-    left: 0;
+    left: 0%;
     width: 100%;
+    border: 1px solid var(--background-dark);
 }
 
 
@@ -231,6 +233,7 @@ textarea:focus {
     letter-spacing: .15rem;
     pointer-events: all;
     cursor: pointer;
+    z-index: 10;
 }
 
 .user-form input[type=submit] {
@@ -351,13 +354,13 @@ textarea:focus {
 
 
 @media only screen and (min-width: 1034px) {
-    .sidebar_wrapper {
-        width: 33%;
+
+    .sidebar_wrapper,
+    .offcanvas.offcanvas-start {
+        width: 35%;
     }
 
     .speak_to_team {
         left: 5px;
     }
 }
-
-

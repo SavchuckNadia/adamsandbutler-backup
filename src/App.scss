@@ -1,20 +1,18 @@
 @import url('./styles/main.scss');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-// body {
-//     // background-color: var(--background-light);
-//     // background-color: darkgray;
-// }
 
 body {
     background-color: var(--background-light);
     color: var(--background-dark);
     font-family: var(--secondary-font);
     overflow-x: hidden;
-
 }
 
+a:hover {
+    color: unset;
+}

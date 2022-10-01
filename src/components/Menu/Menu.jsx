@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogoImg from "../../assets/svg/logo.svg";
 import LogoDarkImg from "../../assets/svg/logo_black.svg";
 import SearchImg from "../../assets/svg/search_light.svg";
@@ -13,7 +13,6 @@ import CustomLink from "../CustomLink";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 import { linksData } from "../../data/links";
-
 
 export default function Menu() {
   window.onscroll = function () {
@@ -41,9 +40,15 @@ export default function Menu() {
           </Link>
           <nav className="nav">
             <ul className={styles.nav_list}>
-            {linksData.map(link => (<CustomLink key={link.id} to={link.path} className={styles.nav_link}>
-                {link.name}
-              </CustomLink>))}
+              {linksData.map((link) => (
+                <CustomLink
+                  key={link.id}
+                  to={link.path}
+                  className={styles.nav_link}
+                >
+                  {link.name}
+                </CustomLink>
+              ))}
             </ul>
           </nav>
           <div className={styles.right_hand_side}>
@@ -72,9 +77,15 @@ export default function Menu() {
           </Link>
           <nav className="nav">
             <ul className={styles.nav_list}>
-            {linksData.map(link => (<CustomLink  key={link.id} to={link.path} className={styles.nav_link}>
-                {link.name}
-              </CustomLink>))}
+              {linksData.map((link) => (
+                <CustomLink
+                  key={link.id}
+                  to={link.path}
+                  className={styles.nav_link}
+                >
+                  {link.name}
+                </CustomLink>
+              ))}
             </ul>
           </nav>
           <div className={styles.right_hand_side}>
@@ -125,16 +136,13 @@ export default function Menu() {
               alt="Search icon"
               className={styles.search}
             />
-            
-<BurgerMenu />
-
+            <BurgerMenu />
           </div>
         </div>
       </header>
       {/* <div className="nav-overlay-mobile">
         <div className="wrap-nav-mobile"></div>
       </div> */}
-      
     </>
   );
 }

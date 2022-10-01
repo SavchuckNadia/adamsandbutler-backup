@@ -1,0 +1,192 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.wrap-carousel {
+    position: relative;
+    margin-left: 30px;
+    margin-bottom: 175px;
+}
+
+.wrap-nav {
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    display: flex;
+    @include mixins.flex(row-reverse, normal, normal);
+    flex-direction: row-reverse;
+    z-index: 10;
+}
+
+
+.swiper-experiences-button-next:hover,
+.swiper-experiences-button-prev:hover {
+    transform: scale(.85);
+}
+
+.swiper-experiences-button-next {
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+.swiper-experiences-button-next,
+.swiper-experiences-button-prev {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    border: 1px solid var(--text-primary-dark);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform .4s cubic-bezier(.76, 0, .24, 1);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.swiper-experiences-button-next {
+    background-image: url(../../assets/svg/arrow-next-carousel.svg);
+    right: 0;
+    top: 0;
+    margin-right: 15px;
+}
+
+.swiper-experiences-button-prev {
+    background-image: url(../../assets/svg/arrow-prev-carousel.svg);
+    left: 0;
+    top: 0;
+}
+
+.swiper-experiences-button-next svg,
+.swiper-experiences-button-prev svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9.5px;
+}
+
+.swiper {
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    height: auto;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.experiencesSwiper .swiper-slide {
+    flex-shrink: 0;
+    opacity: 1;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    transition-property: transform;
+}
+
+.swiper-slide .wrap-experience-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 58px);
+    padding: 19px 29px;
+    color: var(--text-primary-light);
+    z-index: 2;
+}
+
+.swiper-slide .wrap-experience-info h5 {
+    @include mixins.font-size(25px);
+    font-family: var(--primary-font-regular);
+    font-weight: 300;
+    margin: 0;
+}
+
+.image-container:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.swiper-slide .image-container {
+    width: 65vw;
+    height: 78vh
+}
+
+.swiper-slide .image-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.swiper-slide .image-container:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 150.26596%;
+}
+
+.swiper-slide .dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .1);
+}
+
+.swiper-slide .bottom-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 25%;
+    width: 100%;
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), rgba(0, 0, 0, .75));
+}
+
+@media only screen and (min-width: 550px) {
+    .wrap-carousel {
+        margin-bottom: 205px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .wrap-carousel {
+        margin-bottom: 0;
+    }
+
+    .wrap-nav {
+        top: 0;
+        left: -100px;
+        display: block;
+        flex-direction: row;
+    }
+
+    .swiper-experiences-button-next,
+    .swiper-experiences-button-prev {
+        height: 55px;
+        width: 55px;
+    }
+
+    .swiper-experiences-button-prev {
+        margin-bottom: 25px;
+        margin-right: 0;
+    }
+
+    .swiper-slide .wrap-experience-info {
+        padding: 29px;
+    }
+
+    .swiper-slide .image-container {
+        width: 60vw;
+        height: 65vh
+    }
+}
