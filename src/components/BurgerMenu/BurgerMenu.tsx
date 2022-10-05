@@ -4,34 +4,35 @@ import styles from "./BurgerMenu.module.scss";
 import { linksMobileData, socialLinksData } from "../../data/links";
 
 export default function BurgerMenu() {
-  const MenuBtnRef = useRef();
-  const MenuRef = useRef();
+  const MenuBtnRef = useRef<HTMLDivElement>(null);
+  const MenuRef = useRef<HTMLDivElement>(null);
 
   const onHandleClick = () => {
     const li = document.getElementsByTagName("li");
-    if (MenuBtnRef.current.classList.contains(`${styles.active}`)) {
-      [...li].forEach((link) => {
+    const liArr = Array.from(li);
+    if (MenuBtnRef.current?.classList.contains(`${styles.active}`)) {
+      liArr.forEach((link) => {
         link.classList.add(`${styles.fadeOut}`);
       });
       setTimeout(() => {
-        MenuBtnRef.current.classList.remove(`${styles.active}`);
-        MenuRef.current.classList.remove(`${styles.active}`);
-        MenuRef.current.classList.add(`${styles.hideMenu}`);
-        MenuRef.current.classList.remove(`${styles.hideMenu}`);
-        [...li].forEach((link) => {
+        MenuBtnRef.current?.classList.remove(`${styles.active}`);
+        MenuRef.current?.classList.remove(`${styles.active}`);
+        MenuRef.current?.classList.add(`${styles.hideMenu}`);
+        MenuRef.current?.classList.remove(`${styles.hideMenu}`);
+        liArr.forEach((link) => {
           link.classList.remove(`${styles.fadeOut}`);
         });
       }, 2000);
       return;
     }
-    if (!MenuBtnRef.current.classList.contains(`${styles.active}`)) {
-      MenuBtnRef.current.classList.add(`${styles.active}`);
-      MenuRef.current.classList.add(`${styles.active}`);
-      [...li].forEach((link) => {
+    if (!MenuBtnRef.current?.classList.contains(`${styles.active}`)) {
+      MenuBtnRef.current?.classList.add(`${styles.active}`);
+      MenuRef.current?.classList.add(`${styles.active}`);
+      liArr.forEach((link) => {
         link.classList.add(`${styles.fadeIn}`);
       });
       setTimeout(() => {
-        [...li].forEach((link) => {
+        liArr.forEach((link) => {
           link.classList.remove(`${styles.fadeIn}`);
         });
       }, 2000);
@@ -39,8 +40,8 @@ export default function BurgerMenu() {
     }
   };
   const onLinkClick = () => {
-    MenuRef.current.classList.remove(`${styles.active}`);
-    MenuBtnRef.current.classList.remove(`${styles.active}`);
+    MenuRef.current?.classList.remove(`${styles.active}`);
+    MenuBtnRef.current?.classList.remove(`${styles.active}`);
 
   };
 

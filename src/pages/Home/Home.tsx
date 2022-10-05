@@ -2,6 +2,8 @@ import styles from "./Home.module.scss";
 import introHomeImg1 from "../../assets/img/home/home_section_img1.jpeg";
 import introHomeImg2 from "../../assets/img/home/home-section_img2.jpeg";
 import Carousel from "../../components/Carousel/Carousel";
+import { destinationsList } from "../../data/homeData";
+import AboutGlobal from "../components/AboutGlobal/AboutGlobal";
 
 export default function Home() {
   return (
@@ -82,7 +84,38 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section className={styles.destinations_home}>
+          <div className={styles.wrap_text}>
+            <h2 className={styles.secondary_heading}>Luxury Destinations</h2>
+
+            <p className={styles.paragraph_style}>
+              Let Adams &amp; Butler open up a world of wonders and create magical memories that will stay with you far beyond your travels. Whatever your travel preference may be, whether you are looking for a cultural city break, a child friendly family holiday, unlimited adventure, a romantic getaway or just to escape and uncover, we are here to create a seamless experience while handcrafting your bespoke journey.
+            </p>
+          </div>
+          <div className={styles.wrap_destinations_list}>
+            {destinationsList.map(destination => (
+              <a key={destination.id} href={destination.link} className={styles.destination_item}>
+                <div className={styles.image}>
+                  <img src={destination.img} alt="" />
+                </div>
+                <p className={styles.wrap_title}>
+                  {destination.title}
+                </p>
+                <div className={styles.gradient_overlay}></div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <div className={styles.wrap_about_template_destinations}>
+        <AboutGlobal />  
+        </div>
       </div>
     </main>
   );
 }
+
+
+
+
