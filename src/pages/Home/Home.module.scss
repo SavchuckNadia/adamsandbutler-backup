@@ -3,47 +3,89 @@
 .intro_home {
     margin-bottom: 55px;
     padding: 0;
+
+    @media only screen and (min-width: 769px) {
+        padding: 0 30px;
+    }
+
+    @media only screen and (min-width: 1034px) {
+        margin-bottom: 120px;
+        padding: 0 70px;
+    }
+
+    @media only screen and (min-width: 1401px) {
+        padding: 0 140px;
+    }
 }
 
 .intro_home .intro_container {
     @include mixins.flex(column-reverse, normal, normal);
     flex-wrap: wrap;
+
+    @media only screen and (min-width: 769px) {
+        @include mixins.flex(row, space-between, flex-start);
+    }
 }
 
 .intro_home .wrap_image_portrait {
     position: relative;
     width: 100%;
     z-index: 2;
+
+    @media only screen and (min-width: 769px) {
+        width: 45%;
+    }
 }
 
 .intro_home .wrap_image_portrait .image {
     position: relative;
     width: 100%;
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: 142.19409%;
+    }
+
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
 }
 
-.intro_home .wrap_image_portrait .image img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-.intro_home .wrap_image_portrait .image:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: 142.19409%;
-}
 
 .intro_home .wrap_text_and_landscape {
     width: 100%;
     margin-bottom: 55px;
     padding: 0 30px;
+
+    @media only screen and (min-width: 550px) {
+        padding: 0 50px;
+    }
+
+    @media only screen and (min-width: 769px) {
+        width: 45%;
+        margin-bottom: 0;
+        padding: 0;
+    }
 }
 
 .intro_home .wrap_text_and_landscape h2 {
     margin-top: 0;
+
+    @media only screen and (min-width: 769px) {
+        margin: 0.83em 0;
+    }
+}
+
+.intro_home .wrap_text_and_landscape p {
+    margin: 17px 0 35px 0;
+    max-width: 640px;
 }
 
 .secondary_heading {
@@ -54,16 +96,47 @@
     @include mixins.font-size(27px);
     margin-block-start: 0.83em;
     margin-block-end: 0.83em;
+
+    @media screen and (min-width: 415px) {
+        font-size: calc(27px + 25*(100vw - 415px)/1025);
+
+    }
+
+    @media screen and (min-width: 1440px) {
+        @include mixins.font-size(52px);
+    }
 }
 
 .intro_home .wrap_text_and_landscape .image {
     display: none;
+
+    @media only screen and (min-width: 1034px) {
+        display: block;
+        position: relative;
+        width: 100%;
+        margin-top: 90px;
+        transform: translateX(-13vw);
+
+        &:before {
+            display: block;
+            content: "";
+            width: 100%;
+            padding-top: 68.53147%;
+        }
+    }
+
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
 }
 
-.intro_home .wrap_text_and_landscape p {
-    margin: 17px 0 35px 0;
-    max-width: 640px;
-}
+
+
 
 .paragraph_style {
     font-family: var(--secondary-font);
@@ -71,6 +144,14 @@
     color: var(--text-secondary);
     line-height: 1.66;
     @include mixins.font-size(16px);
+
+    @media screen and (min-width: 415px) {
+        font-size: calc(16px + 1*(100vw - 415px)/1025);
+    }
+
+    @media screen and (min-width: 1440px) {
+        @include mixins.font-size(17px);
+    }
 }
 
 .link_to {
@@ -83,35 +164,27 @@
     letter-spacing: .3rem;
     text-transform: uppercase;
     text-decoration: none;
-}
 
-.link_to:hover {
-    color: var(--text-primary-dark);
-}
+    &:hover {
+        color: var(--text-primary-dark);
 
-.link_to:after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: calc(100% - 0.3rem);
-    height: 1px;
-    background-color: var(--text-primary-dark);
-    transition: transform .5s cubic-bezier(.17, .67, .39, 1.01);
-    transform-origin: center left;
-}
+        &:after {
+            transform: scaleX(0);
+            transform-origin: center right;
+        }
+    }
 
-.link_to:hover:after {
-    transform: scaleX(0);
-    transform-origin: center right;
-}
-
-.intro_home .wrap_text_and_landscape .image img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: calc(100% - 0.3rem);
+        height: 1px;
+        background-color: var(--text-primary-dark);
+        transition: transform .5s cubic-bezier(.17, .67, .39, 1.01);
+        transform-origin: center left;
+    }
 }
 
 
@@ -119,6 +192,19 @@
 .experiences_home {
     position: relative;
     padding: 0;
+
+    @media only screen and (min-width: 769px) {
+        padding: 0 0 0 30px;
+    }
+
+    @media only screen and (min-width: 1034px) {
+        padding: 0 0 0 70px;
+        margin-bottom: 145px;
+    }
+
+    @media only screen and (min-width: 1401px) {
+        padding: 0 0 0 140px;
+    }
 }
 
 .experiences_home .background_color_overlay {
@@ -130,6 +216,34 @@
     height: calc(100% + 175px);
     background-color: var(--background-color-overlay);
     z-index: -1;
+
+    @media only screen and (min-width: 550px) {
+        height: calc(100% + 200px);
+    }
+
+    @media only screen and (min-width: 769px) {
+        height: 80%;
+        top: -10px;
+    }
+
+    @media only screen and (min-width: 900px) {
+        height: 80%;
+        top: -12.5%;
+    }
+
+    @media only screen and (min-width: 1034px) {
+        height: 100%;
+        top: -25%;
+    }
+
+    @media only screen and (min-width: 1401px) {
+
+        height: 90%;
+    }
+
+    @media only screen and (min-width: 1600px) {
+        height: 80%;
+    }
 }
 
 .experiences_home .wrap_text {
@@ -137,10 +251,29 @@
     flex-wrap: wrap;
     padding: 0 30px;
     margin-bottom: 75px;
+
+    @media only screen and (min-width: 550px) {
+        padding: 0 50px;
+    }
+
+    @media only screen and (min-width: 769px) {
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 0 100px 0 0;
+        margin-left: 100px;
+    }
+
+    @media only screen and (min-width: 1034px) {
+        padding: 0 140px 0 0;
+    }
 }
 
 .experiences_home .title_wrap {
     width: 100%;
+
+    @media only screen and (min-width: 769px) {
+        width: 35%;
+    }
 }
 
 .experiences_home .title_wrap h2 {
@@ -150,10 +283,23 @@
 
 .experiences_home .text_wrap {
     width: 100%;
+
+    @media only screen and (min-width: 769px) {
+        width: 60%;
+    }
+
+    @media only screen and (min-width: 1034px) {
+        width: 55%;
+    }
 }
 
 .experiences_home .text_wrap p {
     margin-bottom: 30px;
+
+    @media only screen and (min-width: 769px) {
+        margin-top: 17px;
+        max-width: 50ch;
+    }
 }
 
 .experiences_home .wrap_carousel {
@@ -161,17 +307,48 @@
     width: calc(100% - 30px);
     margin-left: 30px;
     margin-bottom: 175px;
+
+    @media only screen and (min-width: 550px) {
+        margin-bottom: 205px;
+        margin-left: 50px;
+        width: calc(100% - 50px);
+    }
+
+    @media only screen and (min-width: 769px) {
+
+        width: calc(100% - 100px);
+        margin-left: 100px;
+        margin-bottom: 0;
+    }
+
 }
 
 
 .destinations_home {
     margin-bottom: 90px;
+
+    @media only screen and (min-width: 550px) {
+        margin-bottom: 0;
+    }
+
+    @media only screen and (min-width: 769px) {
+        margin-bottom: 165px;
+    }
 }
 
 .destinations_home .wrap_text {
     padding: 0 30px;
     text-align: left;
     margin: 0 auto 70px;
+
+    @media only screen and (min-width: 550px) {
+        padding: 0 50px;
+    }
+
+    @media only screen and (min-width: 769px) {
+        max-width: 770px;
+        text-align: center;
+    }
 }
 
 .destinations_home .wrap_destinations_list {
@@ -180,6 +357,17 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0;
+
+    @media only screen and (min-width: 550px) {
+
+        padding: 0 50px 120px;
+    }
+
+    @media only screen and (min-width: 769px) {
+        padding: 0 140px;
+        justify-content: start;
+    }
+
 }
 
 
@@ -193,6 +381,11 @@
     padding: 20px;
     z-index: 1;
     @include mixins.font-size(20px);
+
+    @media screen and (min-width: 415px) {
+
+        font-size: calc(20px + 5*(100vw - 415px)/1025);
+    }
 }
 
 
@@ -200,6 +393,76 @@
     position: relative;
     margin-bottom: 2px;
     width: calc(50% - 1px);
+
+    @media only screen and (min-width: 769px) {
+
+        &:nth-child(1),
+        &:nth-child(2) {
+            width: calc(50% - 1px);
+            margin-right: 2px;
+        }
+
+        &:nth-child(2) {
+            margin-right: 0;
+        }
+
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5) {
+            width: calc(33.33% - 2px);
+            margin-right: 2px;
+        }
+
+        &:nth-child(5) {
+            margin-right: 0;
+        }
+
+        &:nth-child(6),
+        &:nth-child(7),
+        &:nth-child(8),
+        &:nth-child(9) {
+            width: calc(25% - 2px);
+            margin-right: 2px;
+        }
+
+        &:nth-child(9) {
+            margin-right: 0;
+        }
+
+
+        &:nth-child(1) .image:before {
+            display: block;
+            content: "";
+            width: 100%;
+            padding-top: 37.95494%;
+        }
+
+        &:nth-child(2) .image:before {
+            display: block;
+            content: "";
+            width: 100%;
+            padding-top: 37.95494%;
+        }
+
+        &:nth-child(3) .image:before,
+        &:nth-child(4) .image:before,
+        &:nth-child(5) .image:before {
+            display: block;
+            content: "";
+            width: 100%;
+            padding-top: 56.73575%;
+        }
+
+        &:nth-child(6) .image:before,
+        &:nth-child(7) .image:before,
+        &:nth-child(8) .image:before,
+        &:nth-child(9) .image:before {
+            display: block;
+            content: "";
+            width: 100%;
+            padding-top: 75.77855%;
+        }
+    }
 }
 
 
@@ -207,17 +470,175 @@
     position: relative;
     width: 100%;
     height: 100%;
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        // padding-top: 100%;
+    }
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    .gradient_overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #000);
+        opacity: .65;
+        z-index: 0;
+    }
 }
 
-.destinations_home .wrap_destinations_list .image:before {
+
+.wrap_about_template_destinations {
+    padding: 50px 0 20px;
+    background-color: var(--background-color-overlay);
+
+    @media only screen and (min-width: 769px) {
+        background-color: transparent;
+        padding-bottom: 0;
+    }
+}
+
+
+.news_and_press_home {
+    padding: 0 30px;
+    margin: 40px 0 65px 0;
+
+    @media screen and (min-width: 550px) {
+        padding: 0 50px;
+    }
+
+    @media only screen and (min-width: 769px) {
+        padding: 0 100px;
+        margin-bottom: 100px;
+    }
+
+    @media only screen and (min-width: 1034px) {
+        padding: 0 140px;
+        margin-bottom: 130px;
+    }
+
+    @media only screen and (min-width: 1401px) {
+        padding: 0 240px;
+    }
+
+    @media only screen and (min-width: 1640px) {
+        margin: 0 auto 130px;
+    }
+
+}
+
+.news_and_press_home .wrap_text {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media only screen and (min-width: 769px) {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+}
+
+.news_and_press_home .wrap_text h2 {
+    margin: 0 0 30px;
+
+    @media only screen and (min-width: 769px) {
+        margin: 0 0 25px;
+
+    }
+}
+
+.news_and_press_home .wrap_text .desktop_link_to {
+    display: none;
+
+    @media only screen and (min-width: 769px) {
+        display: block;
+    }
+}
+
+.news_and_press_home .mobile_link_to {
+    display: table;
+    margin: 35px auto 0;
+
+    @media only screen and (min-width: 769px) {
+        display: none;
+    }
+}
+
+.wrap_news_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+
+    @media only screen and (min-width: 1034px) {
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 370px;
+    }
+
+    @media only screen and (min-width: 1660px) {
+        height: 470px;
+    }
+
+}
+
+.news_item {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 25px;
+    box-shadow: 0 0 58px 0 rgb(0 0 0 / 15%);
+    transition: box-shadow .2s cubic-bezier(.45, 0, .55, 1);
+
+
+    &:hover {
+        box-shadow: 0 0 30px 0 rgb(0 0 0 / 25%);
+    }
+
+    &:hover img:not(.info img) {
+        transform: scale(1.05);
+    }
+
+    @media only screen and (min-width: 550px) {
+        width: calc(50% - 10px);
+    }
+
+    @media only screen and (min-width: 1034px) {
+        width: calc(33.33% - 10px);
+        height: 100%;
+        margin-bottom: 0;
+    }
+
+}
+
+
+.news_item .image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.news_item .image:before {
     display: block;
     content: "";
     width: 100%;
-    padding-top: 100%;
+    padding-top: 61.43617%;
 }
 
 
-.destinations_home .wrap_destinations_list .image img {
+.news_item .image img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -225,303 +646,40 @@
     left: 0;
     -o-object-fit: cover;
     object-fit: cover;
+    transition: transform .45s cubic-bezier(.45, 0, .55, 1);
 }
 
-.destinations_home .wrap_destinations_list .gradient_overlay {
+.news_item .info {
+    position: relative;
+    padding: 25px 20px;
+}
+
+.news_item .info button {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #000);
-    opacity: .65;
-    z-index: 0;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: 0;
+    padding: 0;
 }
 
-.wrap_about_template_destinations{
-    padding: 50px 0 20px;
-    background-color: var(--background-color-overlay);
+.news_item .info button img {
+    width: 18px;
+    height: 18px;
 }
 
-
-@media screen and (min-width: 415px) {
-    .secondary_heading {
-        font-size: calc(27px + 25*(100vw - 415px)/1025);
-
-    }
-
-    .paragraph_style {
-        font-size: calc(16px + 1*(100vw - 415px)/1025);
-    }
-
-    .secondary_heading {
-        font-size: calc(27px + 25*(100vw - 415px)/1025);
-    }
-
-    .destinations_home .wrap_destinations_list .wrap_title {
-        font-size: calc(20px + 5*(100vw - 415px)/1025);
-    }
+.news_item .info .category {
+    font-family: var(--primary-font-thin);
+    font-size: 13px;
+    color: var(--background-dark);
+    font-weight: 300;
+    margin-bottom: 10px;
 }
 
-@media only screen and (min-width: 550px) {
-    .intro_home .wrap_text_and_landscape {
-        padding: 0 50px;
-    }
-
-    .experiences_home .background_color_overlay {
-        height: calc(100% + 200px);
-    }
-
-    .experiences_home .wrap_text {
-        padding: 0 50px;
-    }
-
-    .experiences_home .wrap_carousel {
-        margin-bottom: 205px;
-        margin-left: 50px;
-        width: calc(100% - 50px);
-    }
-
-    .destinations_home {
-        margin-bottom: 0;
-    }
-
-    .destinations_home .wrap_destinations_list {
-        padding: 0 50px 120px;
-    }
-
-    .destinations_home .wrap_text {
-        padding: 0 50px;
-    }
-
-}
-
-@media only screen and (min-width: 769px) {
-    .intro_home {
-        padding: 0 30px;
-    }
-
-    .intro_home .intro_container {
-        @include mixins.flex(row, space-between, flex-start);
-    }
-
-    .intro_home .wrap_image_portrait {
-        width: 45%;
-    }
-
-    .intro_home .wrap_text_and_landscape {
-        width: 45%;
-        margin-bottom: 0;
-        padding: 0;
-    }
-
-    .intro_home .wrap_text_and_landscape h2 {
-        margin: 0.83em 0;
-    }
-
-    .experiences_home {
-        padding: 0 0 0 30px;
-    }
-
-    .experiences_home .background_color_overlay {
-        height: 80%;
-        top: -10px;
-    }
-
-    .experiences_home .wrap_text {
-        align-items: flex-start;
-        justify-content: space-between;
-        padding: 0 100px 0 0;
-        margin-left: 100px;
-    }
-
-    .experiences_home .title_wrap {
-        width: 35%;
-    }
-
-    .experiences_home .text_wrap {
-        width: 60%;
-    }
-
-    .experiences_home .text_wrap p {
-        margin-top: 17px;
-        max-width: 50ch;
-    }
-
-
-    .experiences_home .wrap_carousel {
-        width: calc(100% - 100px);
-        margin-left: 100px;
-        margin-bottom: 0;
-    }
-
-    .destinations_home {
-        margin-bottom: 165px;
-    }
-
-    .destinations_home .wrap_text {
-        max-width: 770px;
-        text-align: center;
-    }
-
-    .destinations_home .wrap_destinations_list {
-        padding: 0 140px;
-        justify-content: start;
-    }
-
-    .destination_item:nth-child(1),
-    .destination_item:nth-child(2) {
-        width: calc(50% - 1px);
-        margin-right: 2px;
-    }
-    .destination_item:nth-child(2){
-        margin-right: 0;
-    }
-
-    .destination_item:nth-child(3),
-    .destination_item:nth-child(4),
-    .destination_item:nth-child(5) {
-        width: calc(33.33% - 2px);
-        margin-right: 2px;
-    }
-
-    .destination_item:nth-child(5) {
-        margin-right: 0;
-    }
-
-    .destination_item:nth-child(6),
-    .destination_item:nth-child(7),
-    .destination_item:nth-child(8),
-    .destination_item:nth-child(9) {
-        width: calc(25% - 2px);
-        margin-right: 2px;
-    }
-
-    .destination_item:nth-child(9){
-        margin-right: 0;
-    }
-
-
-    .destination_item:nth-child(1) .image:before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: 37.95494%;
-    }
-
-    .destination_item:nth-child(2) .image:before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: 37.95494%;
-    }
-
-    .destination_item:nth-child(3) .image:before,
-    .destination_item:nth-child(4) .image:before,
-    .destination_item:nth-child(5) .image:before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: 56.73575%;
-    }
-
-    .destination_item:nth-child(6) .image:before,
-    .destination_item:nth-child(7) .image:before,
-    .destination_item:nth-child(8) .image:before,
-    .destination_item:nth-child(9) .image:before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: 75.77855%;
-    }
-
-    .wrap_about_template_destinations {
-        background-color: transparent;
-        padding-bottom: 0;
-    }
-}
-
-
-
-@media only screen and (min-width: 900px) {
-    .experiences_home .background_color_overlay {
-        height: 80%;
-        top: -12.5%;
-    }
-}
-
-@media only screen and (min-width: 1034px) {
-    .intro_home {
-        margin-bottom: 120px;
-        padding: 0 70px;
-    }
-
-    .intro_home .wrap_text_and_landscape .image {
-        display: block;
-        position: relative;
-        width: 100%;
-        margin-top: 90px;
-        transform: translateX(-13vw);
-    }
-
-    .intro_home .wrap_text_and_landscape .image:before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: 68.53147%;
-    }
-
-    .experiences_home {
-        padding: 0 0 0 70px;
-        margin-bottom: 145px;
-    }
-
-    .experiences_home .background_color_overlay {
-        height: 100%;
-        top: -25%;
-    }
-
-    .experiences_home .wrap_text {
-        padding: 0 140px 0 0;
-    }
-
-    .experiences_home .text_wrap {
-        width: 55%;
-    }
-}
-
-@media only screen and (min-width: 1401px) {
-    .intro_home {
-        padding: 0 140px;
-    }
-
-    .experiences_home {
-        padding: 0 0 0 140px;
-    }
-
-    .experiences_home .background_color_overlay {
-        height: 90%;
-    }
-}
-
-
-
-@media screen and (min-width: 1440px) {
-    .secondary_heading {
-        @include mixins.font-size(52px);
-    }
-
-    .paragraph_style {
-        @include mixins.font-size(17px);
-    }
-
-    .secondary_heading {
-        @include mixins.font-size(52px);
-    }
-}
-
-@media only screen and (min-width: 1600px) {
-    .experiences_home .background_color_overlay {
-        height: 80%;
-    }
+.news_item .info .title {
+    font-family: var(--primary-font-thin);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: var(--text-primary-dark);
 }

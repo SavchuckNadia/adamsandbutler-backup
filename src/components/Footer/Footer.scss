@@ -10,6 +10,19 @@ footer {
         padding: 40px 30px 25px;
         @include mixins.flex(column-reverse, space-between, normal);
         margin: 0 auto;
+
+        @media only screen and (min-width: 550px) {
+            padding: 70px 70px 50px;
+            flex-direction: row;
+        }
+
+        @media only screen and (min-width: 769px) {
+            padding: 70px 100px 50px;
+        }
+
+        @media only screen and (min-width: 1034px) {
+            padding: 90px 140px 70px;
+        }
     }
 
     .wrap-all-navs {
@@ -19,6 +32,15 @@ footer {
 
     .wrap-single-footer-nav {
         display: none;
+
+        @media only screen and (min-width: 769px) {
+            display: block;
+            margin-right: 35px;
+        }
+
+        @media only screen and (min-width: 1034px) {
+            margin-right: 50px;
+        }
     }
 
     .wrap-single-footer-nav h4 {
@@ -63,11 +85,20 @@ footer {
         text-align: left;
         min-width: 200px;
         margin: 0 auto;
+
+        @media only screen and (min-width: 769px) {
+            text-align: right;
+            margin: 0;
+        }
     }
 
     .wrap-infos-footer .logo-footer {
         margin-bottom: 42px;
         text-align: center;
+
+        @media only screen and (min-width: 769px) {
+            text-align: left;
+        }
     }
 
     .wrap-infos-footer .logo-footer img {
@@ -82,11 +113,20 @@ footer {
         font-weight: 100;
         text-align: center;
         margin: 13px 0;
+
+        @media only screen and (min-width: 769px) {
+            text-align: left;
+            @include mixins.font-size(13px);
+        }
     }
 
     .wrap-footer-socials {
         margin-top: 42px;
         text-align: center;
+
+        @media only screen and (min-width: 769px) {
+            text-align: left;
+        }
     }
 
     .wrap-footer-socials a {
@@ -117,6 +157,20 @@ footer {
         @include mixins.flex(column, space-between, center);
         flex-wrap: wrap;
         padding: 0 30px 35px;
+
+        @media only screen and (min-width: 550px) {
+            padding: 0 70px 50px;
+        }
+
+        @media only screen and (min-width: 769px) {
+            padding: 0 100px 50px;
+            flex-direction: row;
+        }
+
+        @media only screen and (min-width: 1034px) {
+            padding: 0 140px 70px;
+        }
+
     }
 
     .wrap-footer-bottom .wrap-licensed {
@@ -124,6 +178,11 @@ footer {
         margin: 0 auto;
         display: flex;
         align-items: center;
+
+        @media only screen and (min-width: 769px) {
+            max-width: 275px;
+            margin: 0;
+        }
     }
 
     .wrap-footer-bottom .wrap-licensed .image {
@@ -131,6 +190,11 @@ footer {
         width: 100%;
         max-height: 60px;
         max-width: 38px;
+
+        @media only screen and (min-width: 769px) {
+            max-height: 84px;
+            max-width: 54px;
+        }
     }
 
     .wrap-footer-bottom .wrap-licensed .image:before {
@@ -158,6 +222,11 @@ footer {
     .wrap-footer-bottom .wrap-all-legal {
         @include mixins.flex(column, space-between, center);
         flex-wrap: wrap;
+
+        @media only screen and (min-width: 769px) {
+            flex-direction: row;
+            align-items: center;
+        }
     }
 
     .wrap-footer-bottom .wrap-nav-legal {
@@ -166,6 +235,11 @@ footer {
 
     .menu-footer-legal-container {
         @include mixins.flex(column, space-between, center);
+
+        @media only screen and (min-width: 769px) {
+            display: flex;
+            flex-direction: row;
+        }
     }
 
     .wrap-footer-bottom .wrap-nav-legal nav ul {
@@ -174,12 +248,20 @@ footer {
         flex-direction: row;
         flex-wrap: nowrap;
         margin: 16px 0;
+
+        @media only screen and (min-width: 769px) {
+            flex-direction: row;
+        }
     }
 
     .wrap-footer-bottom .wrap-nav-legal nav ul li {
         padding: 0;
         margin-right: 10px;
-        @include mixins.flex(row, normal, center);   
+        @include mixins.flex(row, normal, center);
+
+        @media only screen and (min-width: 769px) {
+            margin-right: 0;
+        }
     }
 
     .wrap-footer-bottom .wrap-nav-legal nav ul li a {
@@ -188,18 +270,33 @@ footer {
         font-weight: 300;
         line-height: 1.85;
         margin-left: 0;
+
+        @media only screen and (min-width: 550px) {
+            margin-left: 10px;
+            @include mixins.font-size(13px);
+        }
     }
 
     .wrap-footer-bottom .wrap-nav-legal .copyright {
         @include mixins.font-size(13px);
         font-weight: 300;
         margin: 10px 0;
+
+        @media only screen and (min-width: 550px) {
+            margin-left: 15px;
+        }
     }
 
     .wrap-footer-bottom .wrap-site-by {
         @include mixins.flex(row, center, center);
         margin-left: 0;
         margin-top: 25px;
+
+        @media only screen and (min-width: 769px) {
+            margin-left: 25px;
+            margin-top: 0;
+            justify-content: flex-end;
+        }
     }
 
     .wrap-footer-bottom .wrap-site-by span {
@@ -212,110 +309,19 @@ footer {
         margin-left: 10px;
     }
 
+    .top-footer-slider {
+        height: 70px;
+        background-color: var(--background-dark-secondary);
 
-    @media only screen and (min-width: 550px) {
-        .container {
-            padding: 70px 70px 50px;
-            flex-direction: row;
+        @media only screen and (min-width: 550px) {
+            height: 90px;
         }
 
-        .wrap-footer-bottom {
-            padding: 0 70px 50px;
-        }
-
-        .wrap-footer-bottom .wrap-nav-legal nav ul li a {
-            margin-left: 10px;
-            @include mixins.font-size(13px);
-        }
-
-        .wrap-footer-bottom .wrap-nav-legal .copyright {
-            margin-left: 15px;
+        @media only screen and (min-width: 769px) {
+            height: 125px;
         }
     }
 
-    @media only screen and (min-width: 769px) {
-        .container {
-            padding: 70px 100px 50px;
-        }
-
-        .wrap-single-footer-nav {
-            display: block;
-            margin-right: 35px;
-        }
-
-        .wrap-infos-footer {
-            text-align: right;
-            margin: 0;
-        }
-
-        .wrap-footer-socials {
-            text-align: left;
-        }
-
-        .wrap-infos-footer .logo-footer {
-            text-align: left;
-        }
-
-        .wrap-infos-footer a {
-            text-align: left;
-            @include mixins.font-size(13px);
-        }
-
-        .wrap-footer-bottom {
-            padding: 0 100px 50px;
-            flex-direction: row;
-        }
-
-        .wrap-footer-bottom .wrap-licensed {
-            max-width: 275px;
-            margin: 0;
-        }
-
-
-        .wrap-footer-bottom .wrap-licensed .image {
-            max-height: 84px;
-            max-width: 54px;
-        }
-
-        .wrap-footer-bottom .wrap-all-legal {
-            flex-direction: row;
-            align-items: center;
-        }
-
-        .menu-footer-legal-container {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .wrap-footer-bottom .wrap-nav-legal nav ul {
-            flex-direction: row;
-        }
-
-        .wrap-footer-bottom .wrap-nav-legal nav ul li {
-            margin-right: 0;
-        }
-
-        .wrap-footer-bottom .wrap-site-by {
-            margin-left: 25px;
-            margin-top: 0;
-            justify-content: flex-end;
-        }
-    }
-
-
-    @media only screen and (min-width: 1034px) {
-        .container {
-            padding: 90px 140px 70px;
-        }
-
-        .wrap-single-footer-nav {
-            margin-right: 50px;
-        }
-
-        .wrap-footer-bottom {
-            padding: 0 140px 70px;
-        }
-    }
 
     .container {
         max-width: unset;

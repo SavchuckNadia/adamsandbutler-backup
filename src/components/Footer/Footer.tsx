@@ -4,14 +4,15 @@ import SquareLogoImg from "../../assets/svg/footer/square-logo.svg";
 import LicencedImg from "../../assets/svg/footer/licenced_footer.svg";
 
 import "./Footer.scss";
-import Slider from "../Slider/Slider";
+import Carousel from "../Carousel/Carousel";
+import { carouselFooterOptions, carouselFooterSlides } from "../../data/carousel/carousel-footer";
 
 export default function Footer() {
   const navLinks = footerNavLinks;
   return (
     <footer>
       <section className="top-footer-slider">
-        <Slider />
+        <Carousel type="footer" slides={carouselFooterSlides} options={carouselFooterOptions} />
       </section>
       <div className="container">
         <div className="wrap-all-navs">
