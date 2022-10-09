@@ -60,8 +60,6 @@ export const carouselExperienceSlides = [
   },
 ];
 
-
-
 export const carouselExperienceOptions = {
   slidesPerView: 1.2,
   centeredSlides: false,

@@ -6,19 +6,21 @@ import { Swiper as SwiperInterface } from 'swiper'
 import "swiper/css";
 import "./ExperienceCarousel.scss";
 import "./FooterCarousel.scss"
+import "./ClientsSayCarousel.scss"
 
 // import required modules
 
 
 import FooterCarouselSlide from "../Footer/FooterCarousel/FooterCarouselSlide";
-import { IFooterSlide, IExperienceSlide } from "../../data/carousel/interface";
+import { IFooterSlide, IExperienceSlide, IClientsSaySlide } from "../../data/carousel/interface";
 import JourneyCarouselSlide from "../../pages/Home/components/ExperienceCarouselSlide/ExperienceCarouselSlide";
+import ClientsSayCarouselSlide from "../ClientsSay/ClientsSayCarousel/ClientsSayCarouselSlide";
 
 
 interface CarouselProps {
   type: string,
   options: any,
-  slides: Array<IFooterSlide | IExperienceSlide>
+  slides: Array<IFooterSlide | IExperienceSlide | IClientsSaySlide>
 }
 
 
@@ -40,6 +42,10 @@ export default function Carousel(props: CarouselProps) {
 
               {props.type === 'footer' &&
                 <FooterCarouselSlide slide={slide} />
+              }
+
+              {props.type === 'clientsSay' &&
+                <ClientsSayCarouselSlide slide={slide} />
               }
             </SwiperSlide>
           ))}

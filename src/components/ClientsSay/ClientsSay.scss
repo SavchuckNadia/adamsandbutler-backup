@@ -1,0 +1,28 @@
+.clients-say-home {
+    padding: 0 30px 150px;
+    text-align: center;
+
+    @media only screen and (min-width: 550px) {
+    padding: 0 50px 150px;
+}
+
+@media only screen and (min-width: 769px) {
+    padding: 0 100px 250px;
+}
+}
+
+.clients-say-home .wrap-carousel-clientsSay {
+    width: 100%;
+    overflow-x: hidden;
+
+    @media only screen and (min-width: 769px){
+        width: calc(75% + 120px);
+        margin: 0 auto;
+    }
+
+    @media only screen and (min-width: 1034px) {
+    width: calc(50% + 120px);
+    margin: 0 auto;
+}
+}
+

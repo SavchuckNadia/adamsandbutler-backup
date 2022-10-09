@@ -10,3 +10,9 @@ export interface IExperienceSlide {
     img: string,
     info: string,
 }
+
+export interface IClientsSaySlide {
+    id: string,
+    text: string,
+    author: string
+}

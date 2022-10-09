@@ -1,0 +1,63 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.signup_band {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: hsla(0, 0%, 100%, .7);
+    z-index: 10;
+
+    @media only screen and (min-width: 769px) {
+        height: 120px;
+        cursor: pointer;
+    }
+}
+
+
+.signup_band .wrap_signup_band_content {
+    padding: 17px 45px;
+    @include mixins.flex(row, center, center);
+    height: 100%;
+
+    @media only screen and (min-width: 769px) {
+        padding: 45px 140px;
+    }
+}
+
+
+
+.signup_band .signup_band_text {
+    font-family: var(--primary-font-thin);
+    font-weight: 300;
+    color: var(--text-primary-dark);
+    text-align: center;
+    margin: 0;
+    @include mixins.font-size(18px);
+
+    @media screen and (min-width: 415px) {
+        font-size: calc(18px + 6*(100vw - 415px)/1025);
+    }
+}
+
+.signup_band .signup_band_text span {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+
+    @media only screen and (min-width: 550px) {
+        display: inline;
+        margin-top: 0;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--text-primary-dark);
+    }
+}

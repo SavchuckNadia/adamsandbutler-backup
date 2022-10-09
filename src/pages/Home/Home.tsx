@@ -1,6 +1,8 @@
 import styles from "./Home.module.scss";
 import introHomeImg1 from "../../assets/img/home/home_section_img1.jpeg";
 import introHomeImg2 from "../../assets/img/home/home-section_img2.jpeg";
+import backgroundBottomImg from "../../assets/img/home/home_bottom_image.jpeg";
+
 import Carousel from "../../components/Carousel/Carousel";
 
 import AboutGlobal from "../components/AboutGlobal/AboutGlobal";
@@ -10,6 +12,8 @@ import findOutMoreIcon from "../../assets/svg/find_out_more.svg"
 import { newsList } from "../../data/Home/news";
 import { destinationsList } from "../../data/Home/destinations";
 import { carouselExperienceOptions, carouselExperienceSlides } from "../../data/carousel/carousel-experience";
+import ClientsSay from "../../components/ClientsSay/ClientsSay";
+import SignUp from "../../components/SignUp/SignUp";
 
 
 
@@ -25,10 +29,10 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.wrap_text_and_landscape}>
-              <h2 className={styles.secondary_heading}>
+              <h2 className={`secondary_heading`}>
                 Magical memories, <br /> Bespoke experiences
               </h2>
-              <p className={styles.paragraph_style}>
+              <p className={`paragraph_style`}>
                 Once you have travelled the voyage never ends. Adams & Butler
                 will open a world of wonders and create magical memories that
                 will stay with you far beyond your travels.
@@ -42,7 +46,7 @@ export default function Home() {
                 world are within your reach.
               </p>
               <a
-                className={styles.link_to}
+                className={`link_to`}
                 href="https://www.adamsandbutler.com/about-us/#our-team"
               >
                 Meet our team
@@ -58,11 +62,11 @@ export default function Home() {
           <div className={styles.background_color_overlay}></div>
           <div className={styles.wrap_text}>
             <div className={styles.title_wrap}>
-              <h2 className={styles.secondary_heading}>Tailor Made Journeys</h2>
+              <h2 className={`secondary_heading`}>Tailor Made Journeys</h2>
             </div>
 
             <div className={styles.text_wrap}>
-              <p className={styles.paragraph_style}>
+              <p className={`paragraph_style`}>
                 A&amp;B design itineraries for our clients that others simply
                 cannot, whether around a theme or a private experience. Our team
                 of highly experienced consultants listen, understand and then
@@ -76,7 +80,7 @@ export default function Home() {
                 reconnect with a joyous attitude towards life.{" "}
               </p>
               <a
-                className={styles.link_to}
+                className={`link_to`}
                 href="https://www.adamsandbutler.com/experiences/"
               >
                 Our experiences
@@ -93,9 +97,9 @@ export default function Home() {
 
         <section className={styles.destinations_home}>
           <div className={styles.wrap_text}>
-            <h2 className={styles.secondary_heading}>Luxury Destinations</h2>
+            <h2 className={`secondary_heading`}>Luxury Destinations</h2>
 
-            <p className={styles.paragraph_style}>
+            <p className={`paragraph_style`}>
               Let Adams &amp; Butler open up a world of wonders and create magical memories that will stay with you far beyond your travels. Whatever your travel preference may be, whether you are looking for a cultural city break, a child friendly family holiday, unlimited adventure, a romantic getaway or just to escape and uncover, we are here to create a seamless experience while handcrafting your bespoke journey.
             </p>
           </div>
@@ -120,8 +124,8 @@ export default function Home() {
 
         <section className={styles.news_and_press_home}>
           <div className={styles.wrap_text}>
-            <h2 className={styles.secondary_heading}>News & Press</h2>
-            <Link to="/news-and-press" className={`${styles.link_to} ${styles.desktop_link_to}`} >View all</Link>
+            <h2 className={`secondary_heading`}>News & Press</h2>
+            <Link to="/news-and-press" className={`link_to ${styles.desktop_link_to}`} >View all</Link>
           </div>
           <div className={styles.wrap_news_row}>
             {newsList.map(news => (
@@ -139,10 +143,17 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <Link to="/news-and-press" className={`${styles.link_to} ${styles.mobile_link_to}`} >View all</Link>
+          <Link to="/news-and-press" className={`link_to ${styles.mobile_link_to}`} >View all</Link>
         </section>
 
-
+        <ClientsSay />
+        <div className={styles.bottom_image}>
+          <div className={styles.gradient_overlay}></div>
+          <div className={styles.image}>
+            <img src={backgroundBottomImg} alt="" />
+          </div>
+        </div>
+        <SignUp />
 
       </div>
     </main>
