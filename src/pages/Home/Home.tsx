@@ -14,6 +14,8 @@ import { destinationsList } from "../../data/Home/destinations";
 import { carouselExperienceOptions, carouselExperienceSlides } from "../../data/carousel/carousel-experience";
 import ClientsSay from "../../components/ClientsSay/ClientsSay";
 import SignUp from "../../components/SignUp/SignUp";
+import AlertDialogSlide from "../../components/Modal/Modal";
+
 
 
 
@@ -154,6 +156,8 @@ export default function Home() {
           </div>
         </div>
         <SignUp />
+
+
 
       </div>
     </main>

@@ -8,8 +8,12 @@
     --background-color-overlay: #f3f2ee;
     --background-dark: #202020;
     --background-dark-secondary: #2d2d2d;
-
+    --border-dark: #646464;
+    --background-light-secondary: hsla(0, 0%, 100%, .7);
+    --background-overlay-modal: hsla(0, 0%, 100%, .5);
     --background-overlay: rgba(0, 0, 0, .2);
+    --error: red;
+    --border-error: #790000;
 
     --primary-font-regular: 'Nocturne', serif;
     --primary-font-thin: 'Nocturne Light', serif;

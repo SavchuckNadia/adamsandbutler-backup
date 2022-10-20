@@ -1,0 +1,86 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.MuiBackdrop-root {
+    background-color: var(--background-overlay-modal) !important;
+}
+
+button.css-lc2yqr-MuiButtonBase-root-MuiIconButton-root {
+    display: none !important;
+}
+
+.MuiDialog-container {
+    font-family: var(--primary-font-thin) !important;
+
+    .close-enquiry {
+        color: var(--text-secondary);
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .wrap-icon-close {
+        border-color: var(--text-secondary);
+    }
+
+    p {
+        @include mixins.font-size(16px);
+        font-family: var(--secondary-font);
+        color: var(--text-secondary);
+        font-weight: 300;
+        line-height: 1.25;
+        max-width: 100%;
+        margin: 0 auto 20px;
+        text-align: center;
+
+        @media only screen and (min-width: 769px) {
+            max-width: 80%;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+
+        }
+    }
+}
+
+.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 79px 30px 40px;
+    background-color: var(--text-primary-light);
+    overflow: scroll;
+    margin: 0;
+
+    @media only screen and (min-width: 550px) {
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        box-shadow: 0 0 55px rgb(0 0 0 / 15%);
+    }
+
+    @media only screen and (min-width: 1034px) {
+        max-width: 800px;
+        padding: 79px 75px 40px;
+    }
+}
+
+h2.css-140puxv-MuiTypography-root-MuiDialogTitle-root {
+    font-family: var(--primary-font-thin) !important;
+    padding: 0 !important;
+    font-weight: 300;
+    color: var(--text-primary-dark);
+    margin-top: 0;
+    margin-bottom: 20px;
+    @include mixins.font-size(28px);
+
+    @media screen and (min-width: 415px) {
+        font-size: calc(28px + 4*(100vw - 415px)/1025);
+    }
+
+}
+
+h2.css-140puxv-MuiTypography-root-MuiDialogTitle-root {
+    margin-bottom: 1em;
+}
