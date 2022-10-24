@@ -1,0 +1,176 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.contact_details {
+    margin-bottom: 20px;
+}
+
+.contact_details a {
+    display: block;
+    @include mixins.font-size(16px);
+    color: var(--text-primary-light);
+    margin: 16px 0;
+}
+
+.subtitle {
+    font-family: var(--secondary-font);
+    @include mixins.font-size(15px);
+    margin-bottom: 20px;
+}
+
+.wrap_form {
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    @include mixins.font-size(14px);
+    margin-bottom: 16px;
+    margin-top: 16px;
+    max-width: 100%;
+}
+
+.user_form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    line-height: 1.5;
+    font-family: var(--secondary-font);
+    scrollbar-color: transparent;
+
+}
+
+.user_form input,
+textarea {
+    padding: 10px 14px 8px;
+    background-color: var(--text-primary-light);
+    border: 0;
+    @include mixins.font-size(14px);
+    font-family: var(--secondary-font);
+    margin-top: 15px;
+    line-height: 1.15;
+    width: 100%;
+    border-radius: 0;
+}
+
+.user_form textarea {
+    height: 95px;
+    width: 100%;
+    letter-spacing: normal;
+    padding: 6px 8px;
+    line-height: 1.5;
+    resize: none;
+    margin-top: 16px
+}
+
+
+.user_form input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0 10px 0 0;
+    border: 0;
+    border-radius: 0;
+}
+
+.input_container {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+}
+
+
+.user_form input[type=submit] {
+    width: 100%;
+    font-size: 12px !important;
+    background-color: var(--text-primary-dark);
+    padding: 17px 69px !important;
+    color: var(--text-primary-light);
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    margin: 32px 0 0 0;
+}
+
+@media screen and (min-width: 415px) {
+
+    .wrap_form {
+        font-size: calc(14px + 2*(100vw - 415px)/1025);
+    }
+
+    .user_form label {
+        font-size: calc(12px + 2*(100vw - 415px)/1025);
+    }
+}
+
+
+
+@media only screen and (min-width: 641px) {
+
+    input,
+    select {
+        width: 100%;
+    }
+
+    textarea {
+        height: 160px;
+        width: 100%;
+    }
+
+    .user_form input[type=submit] {
+        font-size: 1em;
+        margin: 32px 0 0 0;
+    }
+}
+
+
+
+@media only screen and (min-width: 769px) {
+    .contact_details {
+        margin-bottom: 30px;
+    }
+
+    .subtitle {
+        margin-bottom: 10px;
+    }
+
+    .user_form input,
+    .user_form textarea {
+        padding: 14px 14px 11px;
+        @include mixins.font-size(14px);
+
+    }
+
+    .wrap_form div:has(input:first-child:not(input[type="checkbox"])) {
+        width: 48%;
+        margin-top: 0;
+    }
+
+    .wrap_form div:has(input:nth-child(2)) {
+        width: 48%;
+    }
+
+    .user_form textarea {
+        height: 100px;
+    }
+
+    .user_form input[type=submit] {
+        display: inline-block;
+        font-size: 13px !important;
+        width: auto;
+    }
+}
+
+
+
+.user_form input.invalid {
+    border: 1px solid var(--border-error);
+
+    &::placeholder {
+        color: var(--error);
+    }
+}
+
+.warning {
+    color: var(--error);
+    width: 100%;
+    padding: 8px 16px 0 0;
+}

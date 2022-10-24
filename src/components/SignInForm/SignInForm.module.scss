@@ -1,0 +1,117 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.wrap_form {
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    @include mixins.font-size(14px);
+    margin-bottom: 16px;
+    margin-top: 16px;
+    max-width: 100%;
+}
+
+.user_form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    line-height: 1.5;
+    font-family: var(--secondary-font);
+    scrollbar-color: transparent;
+
+}
+
+.user_form input {
+    padding: 10px 14px 8px;
+    background-color: var(--text-primary-light);
+    border: 0;
+    @include mixins.font-size(14px);
+    font-family: var(--secondary-font);
+    margin-top: 15px;
+    line-height: 1.15;
+    width: 100%;
+    border-radius: 0;
+}
+
+.input_container {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+}
+
+
+.user_form input[type=submit] {
+    width: 100%;
+    font-size: 12px !important;
+    background-color: var(--text-primary-dark);
+    padding: 17px 69px !important;
+    color: var(--text-primary-light);
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    margin: 32px 0 0 0;
+}
+
+@media screen and (min-width: 415px) {
+
+    .wrap_form {
+        font-size: calc(14px + 2*(100vw - 415px)/1025);
+    }
+
+    .user_form label {
+        font-size: calc(12px + 2*(100vw - 415px)/1025);
+    }
+}
+
+
+
+@media only screen and (min-width: 641px) {
+
+    input {
+        width: 100%;
+    }
+
+    .user_form input[type=submit] {
+        font-size: 1em;
+        margin: 32px 0 0 0;
+    }
+}
+
+
+
+@media only screen and (min-width: 769px) {
+
+    .user_form input {
+        padding: 14px 14px 11px;
+        @include mixins.font-size(14px);
+
+    }
+
+    .wrap_form div:has(input) {
+        width: 48%;
+        margin-top: 0;
+    }
+
+    .wrap_form div:has(input:nth-child(2)) {
+        width: 48%;
+    }
+
+    .user_form input[type=submit] {
+        display: inline-block;
+        font-size: 13px !important;
+        width: auto;
+    }
+}
+
+
+
+.user_form input.invalid {
+    border: 1px solid var(--border-error);
+}
+
+.warning {
+    color: var(--error);
+    width: 100%;
+    padding: 8px 16px 0 0;
+}

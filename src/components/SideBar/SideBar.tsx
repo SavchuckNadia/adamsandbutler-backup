@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { ReactNode, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import closeIcon from "../../assets/svg/close-icon.svg";
-import FormChatWithUs from "../FormChatWithUs/FormChatWithUs";
 import "./SideBar.scss";
 
 const options = {
@@ -16,7 +15,15 @@ interface IOptions {
   backdrop: boolean,
 }
 
-function OffCanvas({ ...options }: IOptions) {
+interface OffCanvasProps {
+  title: string,
+  titleSidebarBtn: string,
+  btnClassName: string,
+  options: IOptions,
+  children: ReactNode
+}
+
+function OffCanvas(props: OffCanvasProps) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,18 +31,18 @@ function OffCanvas({ ...options }: IOptions) {
 
   return (
     <>
-      <button className="speak_to_team" onClick={toggleShow}>
-        Chat with us
+      <button className={`${props.btnClassName}`} onClick={toggleShow}>
+        {props.titleSidebarBtn}
       </button>
       <Offcanvas
         show={show}
         onHide={handleClose}
-        {...options}
+        {...props.options}
         className="wrap-enquiry"
       >
         <Offcanvas.Header>
           <Offcanvas.Title className="enquiry-title">
-            Have a chat with our team
+            {props.title}
           </Offcanvas.Title>
           <div className="close-enquiry" onClick={handleClose}>
             Close
@@ -45,25 +52,27 @@ function OffCanvas({ ...options }: IOptions) {
           </div>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <section className="contact-details">
-            <a href="tel:1-800-894-5712">US Toll Free: 1-800-894-5712</a>
-            <a href="tel:1-800-764-042">Australia Toll Free:1-800-764-042</a>
-            <a href="tel:+353-1-288-9355">Ireland: +353-1-288-9355</a>
-          </section>
-          <p className="subtitle">
-            Or fill in the form below and we'll be in touch
-          </p>
-          <FormChatWithUs />
+          {props.children}
         </Offcanvas.Body>
       </Offcanvas>
     </>
   );
 }
 
-export default function SideBar() {
+
+interface SideBarProps {
+  children: any,
+  title: string,
+  titleSidebarBtn: string,
+  btnClassName: string
+}
+
+export default function SideBar(props: SideBarProps) {
   return (
     <>
-      <OffCanvas {...options} />
+      <OffCanvas options={options} title={props.title} titleSidebarBtn={props.titleSidebarBtn} btnClassName={props.btnClassName} >
+        {props.children}
+      </OffCanvas>
     </>
   );
 }

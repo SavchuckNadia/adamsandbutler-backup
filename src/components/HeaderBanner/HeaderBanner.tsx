@@ -5,6 +5,8 @@ import HeroImg from "../../assets/img/home/hero_home_image.jpeg";
 import { logoIcons } from "../../data/headerBannerLogo";
 import virtuosoMemberLogo from "../../assets/svg/header-banner-logo/virtuoso_member_logo_hero.svg";
 import SideBar from "../SideBar/SideBar";
+import FormChatWithUs from "../FormChatWithUs/FormChatWithUs";
+import SignInForm from "../SignInForm/SignInForm";
 
 export default function HeaderBanner() {
   return (
@@ -96,11 +98,17 @@ export default function HeaderBanner() {
               </div>
             ))}
           </div>
-
-          {/* <button className={styles.speak_to_team}>Chat with us</button> */}
         </section>
       </div>
-      <SideBar />
+
+      <SideBar title="Have a chat with our team" titleSidebarBtn="Chat with us" btnClassName="speak_to_team" >
+        <FormChatWithUs />
+      </SideBar>
+
+
+      <SideBar title="Sign In" titleSidebarBtn="Sign In" btnClassName="sign_in">
+        <SignInForm />
+      </SideBar>
     </>
   );
 }

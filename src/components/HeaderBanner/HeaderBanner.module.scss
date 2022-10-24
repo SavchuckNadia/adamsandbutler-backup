@@ -1,20 +1,5 @@
 @use '../../../src/styles/abstracts/mixins.scss';
 
-.speak_to_team {
-    display: none;
-    background-color: var(--text-primary-dark);
-    border: 0;
-    padding: 14px;
-    color: var(--text-primary-light);
-    font-weight: 100;
-    text-transform: uppercase;
-    @include mixins.font-size(12px);
-    letter-spacing: .15rem;
-    pointer-events: all;
-    cursor: pointer;
-    z-index: 10;
-}
-
 .wrapper_home_page,
 .hero_home {
     position: relative;
@@ -365,16 +350,6 @@
         width: 220px;
     }
 
-    .speak_to_team {
-        display: block;
-        position: fixed;
-        left: 0;
-        top: 50%;
-        width: auto;
-        height: 44px;
-        transform: translate(-41%, -75%) rotate(90deg);
-    }
-
     .wrap_logo_hero_mobile {
         display: none;
     }
@@ -386,7 +361,8 @@
         max-width: 700px;
     }
 }
-@media only screen and (min-width: 1034px){
+
+@media only screen and (min-width: 1034px) {
     .hero_home {
         margin-bottom: 130px;
     }
@@ -397,13 +373,6 @@
 
     .wrap_logo_hero {
         max-width: 750px;
-    }
-}
-
-@media only screen and (min-width: 1034px) {
-
-    .speak_to_team {
-        left: 5px;
     }
 }
 

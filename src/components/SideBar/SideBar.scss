@@ -12,6 +12,11 @@
     font-family: var(--primary-font-thin);
     font-weight: 300;
     pointer-events: all;
+
+    @media only screen and (min-width: 769px) {
+        width: 50%;
+        padding: 60px 40px;
+    }
 }
 
 .offcanvas.offcanvas-start {
@@ -20,6 +25,14 @@
     left: 0%;
     width: 100%;
     border: 1px solid var(--background-dark);
+
+    @media only screen and (min-width: 769px) {
+        width: 50%;
+    }
+
+    @media only screen and (min-width: 1034px) {
+        width: 35%;
+    }
 }
 
 
@@ -87,139 +100,11 @@
     font-family: var(--primary-font-thin);
     font-weight: 300;
     margin: 0 0 25px;
+
+    @media only screen and (min-width: 769px) {
+        margin: 0 0 35px;
+    }
 }
-
-.contact-details {
-    margin-bottom: 20px;
-}
-
-.contact-details a {
-    display: block;
-    @include mixins.font-size(16px);
-    color: var(--text-primary-light);
-    margin: 16px 0;
-}
-
-.subtitle {
-    font-family: var(--secondary-font);
-    @include mixins.font-size(15px);
-    margin-bottom: 20px;
-}
-
-.wrap-form {
-    font-family: var(--secondary-font);
-    font-weight: 300;
-    @include mixins.font-size(14px);
-    margin-bottom: 16px;
-    margin-top: 16px;
-    max-width: 100%;
-}
-
-.user-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    text-align: left;
-    max-width: 100%;
-    margin: 0 auto;
-    overflow-x: hidden;
-    line-height: 1.5;
-    font-family: var(--secondary-font);
-}
-
-.user-form input,
-textarea,
-.react-tel-input .form-control {
-    padding: 10px 14px 8px;
-    background-color: var(--text-primary-light);
-    border: 0;
-    @include mixins.font-size(14px);
-    font-family: var(--secondary-font);
-    margin-top: 15px;
-    line-height: 1.15;
-    width: 100%;
-    border-radius: 0;
-}
-
-.user-form textarea {
-    height: 95px;
-    width: 100%;
-    letter-spacing: normal;
-    padding: 6px 8px;
-    line-height: 1.5;
-    resize: none;
-    margin-top: 16px
-}
-
-
-
-.user-form input:first-child {
-    width: 100%;
-}
-
-.user-form input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin: 0 10px 0 0;
-    border: 0;
-    border-radius: 0;
-}
-
-.input_container {
-    display: flex;
-    width: 100%;
-    margin-top: 16px;
-}
-
-
-.react-tel-input .country-list .country .dial-code {
-    color: #999;
-}
-
-div.react-tel-input input {
-    width: 1000px !important;
-    overflow: hidden;
-    margin-top: 15px;
-
-}
-
-.react-tel-input .form-control {
-    width: 100%;
-    color: #646464 !important;
-    font-family: var(--secondary-font);
-}
-
-.react-tel-input {
-    margin-top: 15px;
-    color: #646464 !important;
-
-}
-
-.react-tel-input .flag-dropdown {
-    border: none;
-}
-
-.country.highlight {
-    background-color: rgba(0, 0, 0, .05);
-}
-
-.flag-box {
-    margin-right: 6px;
-}
-
-
-.react-tel-input .form-control:focus,
-input:focus,
-textarea:focus {
-    box-shadow: none;
-    outline: unset;
-    border: none;
-}
-
-.react-tel-input .selected-flag {
-    background-color: var(--text-primary-light);
-}
-
 
 .speak_to_team {
     display: none;
@@ -234,108 +119,8 @@ textarea:focus {
     pointer-events: all;
     cursor: pointer;
     z-index: 10;
-}
 
-.user-form input[type=submit] {
-    width: 100%;
-    font-size: 12px !important;
-    background-color: var(--text-primary-dark);
-    padding: 17px 69px !important;
-    color: var(--text-primary-light);
-    text-transform: uppercase;
-    letter-spacing: .2rem;
-    margin: 32px 0 0 0;
-}
-
-.react-tel-input input.form-control {
-    padding: 14px 6px 11px 52px;
-}
-
-@media screen and (min-width: 415px) {
-
-    .wrap-form {
-        font-size: calc(14px + 2*(100vw - 415px)/1025);
-    }
-
-    .user-form label {
-        font-size: calc(12px + 2*(100vw - 415px)/1025);
-    }
-}
-
-
-
-@media only screen and (min-width: 641px) {
-
-    input,
-    select,
-    .react-tel-input .form-control {
-        width: 100%;
-    }
-
-    textarea {
-        height: 160px;
-        width: 100%;
-    }
-
-    .user-form input[type=submit] {
-        font-size: 1em;
-        margin: 32px 0 0 0;
-    }
-}
-
-
-
-@media only screen and (min-width: 769px) {
-    .offcanvas.offcanvas-start {
-        width: 50%;
-    }
-
-    .sidebar_wrapper,
-    .offcanvas {
-        width: 50%;
-        padding: 60px 40px;
-    }
-
-    .enquiry-title,
-    .offcanvas-title {
-        margin: 0 0 35px;
-    }
-
-    .contact-details {
-        margin-bottom: 30px;
-    }
-
-    .subtitle {
-        margin-bottom: 10px;
-    }
-
-
-    .user-form input,
-    .user-form textarea {
-        padding: 14px 14px 11px;
-        @include mixins.font-size(14px);
-
-    }
-
-    .react-tel-input input.form-control {
-        @include mixins.font-size(14px);
-    }
-
-    .wrap-form input:first-child:not(input[type="checkbox"]) {
-        width: 48%;
-        margin-top: 0;
-    }
-
-    .wrap-form input:nth-child(2) {
-        width: 48%;
-        margin-top: 0 !important;
-    }
-
-    .user-form textarea {
-        height: 100px;
-    }
-
-    .speak_to_team {
+    @media only screen and (min-width: 769px) {
         display: block;
         position: fixed;
         left: 0;
@@ -345,22 +130,51 @@ textarea:focus {
         transform: translate(-41%, -75%) rotate(90deg);
     }
 
-    .user-form input[type=submit] {
-        display: inline-block;
-        font-size: 13px !important;
+    @media only screen and (min-width: 1034px) {
+        left: 5px;
+    }
+}
+
+.sign_in{
+    background-color: var(--text-primary-dark);
+    border: 0;
+    padding: 14px;
+    color: var(--text-primary-light);
+    font-weight: 100;
+    text-transform: uppercase;
+    @include mixins.font-size(12px);
+    letter-spacing: .15rem;
+    pointer-events: all;
+    cursor: pointer;
+    z-index: 10;
+
+    @media only screen and (min-width: 769px) {
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 70%;
         width: auto;
+        height: 44px;
+        transform: translate(-41%, -75%) rotate(90deg);
+    }
+
+    @media only screen and (min-width: 1034px) {
+        left: 5px;
     }
 }
 
 
-@media only screen and (min-width: 1034px) {
+.offcanvas-body::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
 
-    .sidebar_wrapper,
-    .offcanvas.offcanvas-start {
-        width: 35%;
-    }
+.offcanvas-body::-webkit-scrollbar-thumb {
+    background: #43434300;
+    border-radius: 6px;
+    box-shadow: inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgba(0, 0, 0, 0);
+}
 
-    .speak_to_team {
-        left: 5px;
-    }
+.offcanvas-body::-webkit-scrollbar-track {
+    background: linear-gradient(90deg,#43434346,#43434357 1px,rgba(17, 17, 17, 0) 0,rgba(17, 17, 17, 0));
 }
