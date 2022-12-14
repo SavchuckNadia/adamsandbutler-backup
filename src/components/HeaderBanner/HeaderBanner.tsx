@@ -7,8 +7,24 @@ import virtuosoMemberLogo from "../../assets/svg/header-banner-logo/virtuoso_mem
 import SideBar from "../SideBar/SideBar";
 import FormChatWithUs from "../FormChatWithUs/FormChatWithUs";
 import SignInForm from "../SignInForm/SignInForm";
+import { useEffect } from "react";
+import { useUserAuth } from "../../context/auth/UserAuthContext";
 
 export default function HeaderBanner() {
+  const { logOut, user, isAdmin } = useUserAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+
+  }, [user, isAdmin])
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -106,9 +122,15 @@ export default function HeaderBanner() {
       </SideBar>
 
 
-      <SideBar title="Sign In" titleSidebarBtn="Sign In" btnClassName="sign_in">
+      {!user && <SideBar title="Sign In" titleSidebarBtn="Sign In" btnClassName="sign_in">
         <SignInForm />
-      </SideBar>
+      </SideBar>}
+
+      {user && <button onClick={handleLogout} className={`${styles.sidebar_btn} ${styles.logout_btn}`}>Logout</button>
+      }
+
+      {isAdmin && <Link to='/admin' className={`${styles.sidebar_btn} ${styles.admin_btn}`}>Admin</Link>
+      }
     </>
   );
 }

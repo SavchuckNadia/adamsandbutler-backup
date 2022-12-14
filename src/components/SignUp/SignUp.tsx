@@ -3,7 +3,8 @@ import AlertDialogSlide from "../Modal/Modal"
 import styles from "./SignUp.module.scss"
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { userRegistration } from "../../services/auth";
+import { useUserAuth } from "../../context/auth/UserAuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const initialValues = {
@@ -36,8 +37,18 @@ const userSchema = yup.object().shape({
 });
 
 const SignUp = () => {
+    const { signUp } = useUserAuth();
+    let navigate = useNavigate();
 
     const signUpText = 'Get the latest from Adams & Butler'
+
+    const submitHandler = async (values: any) => {
+        console.log(JSON.stringify(values));
+        // userRegistration(values)
+        await signUp(values.email, values.password);
+        navigate("/");
+        resetForm({ values: initialValues })
+    }
 
     const {
         handleSubmit,
@@ -51,9 +62,7 @@ const SignUp = () => {
         initialValues: initialValues,
         validationSchema: userSchema,
         onSubmit: (values) => {
-            console.log(JSON.stringify(values));
-            userRegistration(values)
-            resetForm({ values: initialValues })
+            submitHandler(values)
         },
     });
 

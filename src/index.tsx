@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './styles/main.scss'
+import { UserAuthContextProvider } from './context/auth/UserAuthContext';
+import { BrowserRouter } from 'react-router-dom';
 
 
 const root = ReactDOM.createRoot(
@@ -11,7 +13,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <UserAuthContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+    </UserAuthContextProvider>
   </React.StrictMode>
 );
 

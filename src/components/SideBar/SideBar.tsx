@@ -31,7 +31,7 @@ function OffCanvas(props: OffCanvasProps) {
 
   return (
     <>
-      <button className={`${props.btnClassName}`} onClick={toggleShow}>
+      <button className={`${props.btnClassName} sidebar_btn`} onClick={toggleShow}>
         {props.titleSidebarBtn}
       </button>
       <Offcanvas

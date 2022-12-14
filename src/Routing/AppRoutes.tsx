@@ -7,9 +7,7 @@ import NewsAndPress from '../pages/NewsAndPress/NewsAndPress';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import { Route, Routes } from 'react-router-dom';
 import YourWishlist from '../pages/YourWishlist/YourWishlist';
-import { useState } from 'react';
 import Admin from '../admin/Admin';
-import Protected from './Protected';
 import Dashboard from '../admin/scenes/dashboard';
 import Team from '../admin/scenes/team';
 import Contacts from '../admin/scenes/contacts';
@@ -17,20 +15,15 @@ import Invoices from '../admin/scenes/invoices';
 import Form from '../admin/scenes/form';
 import Calendar from '../admin/scenes/calendar';
 import FAQ from '../admin/scenes/faq';
+import ProtectedRoute from './ProtectedRoute';
 
 
 const AppRoutes = () => {
-    const [isLoggedIn, setisLoggedIn] = useState<any>(true);
-    const logIn = () => {
-        setisLoggedIn(true);
-    };
-    const logOut = () => {
-        setisLoggedIn(false);
-    };
 
     return (
+
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route index path="/" element={<Home />} />
             <Route path="/experiences" element={<TailoredExperiences />} />
             <Route path="/destinations" element={<Destinations />} />
             <Route path="/private-rentals" element={<PrivateRentals />} />
@@ -40,12 +33,14 @@ const AppRoutes = () => {
             <Route path="/your-wishlist" element={<YourWishlist />} />
 
 
-
-            <Route path="/admin" element={
-                <Protected isLoggedIn={isLoggedIn}>
-                    <Admin />
-                </Protected>
-            }>
+            <Route
+                path="/admin"
+                element={
+                    <ProtectedRoute>
+                        <Admin />
+                    </ProtectedRoute>
+                }
+            >
                 <Route path="admin" element={<Dashboard />} />
                 <Route path="team" element={<Team />} />
                 <Route path="contacts" element={<Contacts />} />

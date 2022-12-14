@@ -7,12 +7,25 @@ import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 import NotificationsOutlined from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlined from "@mui/icons-material/SettingsOutlined";
 import PersonOutlined from "@mui/icons-material/PersonOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
+import { useUserAuth } from "../../../context/auth/UserAuthContext";
+import { Navigate } from "react-router-dom";
 
 const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const { logOut } = useUserAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      return <Navigate to="/" />;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
@@ -33,7 +46,7 @@ const Topbar = () => {
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlined />
-            ) : (
+          ) : (
             <LightModeOutlined />
           )}
         </IconButton>
@@ -45,6 +58,9 @@ const Topbar = () => {
         </IconButton>
         <IconButton>
           <PersonOutlined />
+        </IconButton>
+        <IconButton onClick={handleLogout}>
+          <LogoutIcon />
         </IconButton>
       </Box>
     </Box>

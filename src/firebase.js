@@ -5,12 +5,12 @@ import { getFirestore } from "firebase/firestore"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDHsQErOoiZKD0bq2NUiqS5Rq2UdbON00I",
-  authDomain: "luxury-travel-118ec.firebaseapp.com",
-  projectId: "luxury-travel-118ec",
-  storageBucket: "luxury-travel-118ec.appspot.com",
-  messagingSenderId: "359751053966",
-  appId: "1:359751053966:web:11781cafa6594a06690fdf"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
 // Initialize Firebase

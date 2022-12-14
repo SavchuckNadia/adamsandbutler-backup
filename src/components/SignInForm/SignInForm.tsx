@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 import styles from "./SignInForm.module.scss"
-import { signIn } from '../../services/auth';
+import { useUserAuth } from "../../context/auth/UserAuthContext";
 
 
 const initialValues = {
@@ -21,6 +21,13 @@ const userSchema = yup.object().shape({
 });
 
 const SignInForm = () => {
+    const { logIn } = useUserAuth();
+
+    const submitHandler = async (values: any) => {
+        await logIn(values.email, values.password);
+        resetForm({ values: initialValues })
+    }
+
     const {
         handleSubmit,
         handleChange,
@@ -34,7 +41,8 @@ const SignInForm = () => {
         validationSchema: userSchema,
         onSubmit: (values) => {
             console.log(JSON.stringify(values));
-            signIn(values.email, values.password)
+            // signIn(values.email, values.password)
+            submitHandler(values)
             resetForm({ values: initialValues })
         },
     });

@@ -243,6 +243,35 @@
     left: 30px;
 }
 
+.sidebar_btn {
+    background-color: var(--text-primary-dark);
+    border: 0;
+    padding: 14px;
+    color: var(--text-primary-light);
+    font-weight: 100;
+    text-transform: uppercase;
+    @include mixins.font-size(12px);
+    letter-spacing: .15rem;
+    pointer-events: all;
+    cursor: pointer;
+    z-index: 10;
+    width: auto;
+    height: 44px;
+    transform: translate(-40%, -75%) rotate(90deg);
+    position: fixed;
+}
+
+.sidebar_btn.logout_btn {
+    left: 5px;
+    top: 69%;
+}
+
+.sidebar_btn.admin_btn {
+    left: 5px;
+    top: 85%;
+}
+
+
 @media screen and (min-width: 415px) {
 
     .big_title_home {
