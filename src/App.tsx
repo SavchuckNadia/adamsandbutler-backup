@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import AppRoutes from './Routing/AppRoutes';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
       {!adminRoute && <Header />}
       <AppRoutes />
       {!adminRoute && <Footer />}
+      <ScrollToTop />
       <ToastContainer />
     </>
   );
