@@ -4,21 +4,27 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../../components/Header";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import { useEffect, useRef, useState } from "react";
-import { db, storage } from "../../../../firebase";
-import { collection, doc, setDoc, updateDoc } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import useInput from "../../../../hooks/useInput";
+import { addDataToDatabase, updateData, uploadFile } from "../../../../services/data";
+import { IExperienceSlide } from "../../../../interfaces/IExperienceSlide";
+import { usePickedFile } from "../../../../hooks/usePickedFile";
 
-const CreateExperience = (props) => {
+interface CreateExperienceProps {
+  updatingSlide:IExperienceSlide | null,
+   isUpdate:boolean,
+    setIsUpdate:(isUpdate: boolean) => {},
+    setUpdatingSlide:(slide: IExperienceSlide | null) => {}
+}
+
+const CreateExperience = (props: CreateExperienceProps) => {
   let currentSlide = props.updatingSlide;
   let isUpdate = props.isUpdate;
 
-  console.log("currentSlide!!!!", currentSlide);
-  const [progress, setProgress] = useState(null);
+  const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [file, setFile] = useState();
-  const [img, setImg] = useState();
-  const filePickerRef = useRef();
+  const { file, pickedHandler } = usePickedFile();
+  const [img, setImg] = useState<string | null>();
+  const filePickerRef = useRef<HTMLInputElement>(null);
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const {
@@ -29,7 +35,7 @@ const CreateExperience = (props) => {
     valueChangeHandler: linkChangeHandler,
     inputBlurHandler: linkBlurHandler,
     reset: resetLinkInput,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value:string) => value.trim() !== "");
 
   const {
     value: enteredInfo,
@@ -39,75 +45,21 @@ const CreateExperience = (props) => {
     valueChangeHandler: infoChangeHandler,
     inputBlurHandler: infoBlurHandler,
     reset: reseInfoInput,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value:string) => value.trim() !== "");
 
-  const [enteredLinkTouched, setEnteredLinkTouched] = useState(false);
-  const [enteredInfoTouched, setEnteredInfoTouched] = useState(false);
 
   useEffect(() => {
-    const uploadFile = () => {
-      const storageRef = ref(storage, file.name);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      setLoading(true);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setProgress(progress);
-
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is Pause");
-              setLoading(false);
-
-              break;
-            case "running":
-              console.log("Upload is Running");
-              break;
-            default:
-              break;
-          }
-        },
-        (error) => {
-          console.log(error);
-          setLoading(false);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImg(downloadURL);
-          });
-        }
-      );
-    };
-    file && uploadFile();
+    file && uploadFile(file, setLoading, setProgress, setImg);
   }, [file]);
 
-  const addDataToDatabase = async () => {
-    const newSlide = doc(collection(db, "home_experience-carousel"));
-    try {
-      const data = {
-        link: enteredLink,
-        info: enteredInfo,
-        img: img,
-      };
-      await setDoc(newSlide, { ...data, id: newSlide.id });
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  };
-
   const updateSlide = async () => {
-    const slideRef = doc(db, "home_experience-carousel", currentSlide.id);
-    console.log(slideRef);
-    setEnteredInfo();
     const data = {
       link: enteredLink,
       info: enteredInfo,
       img: img,
     };
-    await updateDoc(slideRef, data);
+
+    updateData("home_experience-carousel", data, currentSlide);
   };
 
   useEffect(() => {
@@ -126,13 +78,16 @@ const CreateExperience = (props) => {
     formIsValid = true;
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setEnteredLinkTouched(true);
-    setEnteredInfoTouched(true);
 
     if (formIsValid && !isUpdate) {
-      addDataToDatabase();
+      const data = {
+        link: enteredLink,
+        info: enteredInfo,
+        img: img,
+      };
+      addDataToDatabase("home_experience-carousel", data);
     }
     if (formIsValid && isUpdate) {
       updateSlide();
@@ -143,14 +98,6 @@ const CreateExperience = (props) => {
     props.setIsUpdate(false);
     props.setUpdatingSlide(null);
     currentSlide = null;
-  };
-
-  const pickedHandler = (event) => {
-    let pickedFile;
-    if (event.target.files && event.target.files.length === 1) {
-      pickedFile = event.target.files[0];
-      setFile(pickedFile);
-    }
   };
 
   return (
@@ -230,7 +177,7 @@ const CreateExperience = (props) => {
                 value={progress}
               />
             )}
-            <img src={img} alt="" style={{ width: "150px" }} />
+            <img src={img as string} alt="" style={{ width: "150px" }} />
           </Box>
         </Box>
         <Box display="flex" justifyContent="end" mt="20px">

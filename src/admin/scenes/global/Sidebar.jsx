@@ -12,9 +12,9 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import ReviewsIcon from '@mui/icons-material/Reviews';
-import LensOutlinedIcon from '@mui/icons-material/LensOutlined';
-import userImg from "../../../assets/user.png"
+import ReviewsIcon from "@mui/icons-material/Reviews";
+import LensOutlinedIcon from "@mui/icons-material/LensOutlined";
+import userImg from "../../../assets/user.png";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -170,7 +170,7 @@ const Sidebar = () => {
             </Typography>
 
             <Item
-              title="Experiences"
+              title="Experiences section"
               to="/admin/home-experiences"
               icon={<LensOutlinedIcon />}
               selected={selected}
@@ -178,13 +178,20 @@ const Sidebar = () => {
             />
 
             <Item
+              title="News and press section"
+              to="/admin/home-news"
+              icon={<LensOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            
+            <Item
               title="Testimonials Form"
               to="/admin/testimonials"
               icon={<ReviewsIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-
 
             <Item
               title="Profile Form"

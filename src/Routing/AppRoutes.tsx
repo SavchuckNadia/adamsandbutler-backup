@@ -18,6 +18,7 @@ import FAQ from '../admin/scenes/faq';
 import ProtectedRoute from './ProtectedRoute';
 import Testimonials from '../admin/scenes/testimonials';
 import Experiences from '../admin/pages/home/Experiences/Experiences';
+import News from '../admin/pages/home/News/News';
 
 
 
@@ -53,6 +54,9 @@ const AppRoutes = () => {
                 <Route path="calendar" element={<Calendar />} />
                 <Route path="testimonials" element={<Testimonials />} />
                 <Route path="home-experiences" element={<Experiences />} />
+                <Route path="home-news" element={<News />} />
+
+                
   
             </Route>
         </Routes>

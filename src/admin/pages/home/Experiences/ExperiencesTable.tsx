@@ -4,19 +4,23 @@ import { tokens } from "../../../theme";
 
 import Header from "../../../components/Header";
 import { useEffect, useState } from "react";
-import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
-import { db } from "../../../../firebase";
 
 import AlertDialogSlide from "../../../../components/Modal/Modal";
+import { deleteData, getData } from "../../../../services/data";
 
-const ExperiencesTable = (props) => {
+interface ExperiencesTableProps {
+  getUpdatingSlide: (id: string) => {},
+  setIsUpdate: (isUpdate: boolean) => {}
+}
+
+const ExperiencesTable = (props: ExperiencesTableProps) => {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(null);
+  const [progress, setProgress] = useState(0);
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const columns = [
+  const columns: Array<any> = [
     { field: "id", headerName: "ID" },
     {
       field: "link",
@@ -34,7 +38,7 @@ const ExperiencesTable = (props) => {
     {
       field: "img",
       headerName: "Image",
-      renderCell: (params) => {
+      renderCell: (params: any) => {
         return <img src={params.value} alt="" style={{ width: "100px" }} />;
       },
       flex: 1,
@@ -44,7 +48,7 @@ const ExperiencesTable = (props) => {
       headerName: "Actions",
       headerAlign: "left",
       align: "left",
-      renderCell: (params) => {
+      renderCell: (params: any) => {
         return (
           <>
             <Button
@@ -84,51 +88,31 @@ const ExperiencesTable = (props) => {
   ];
 
   useEffect(() => {
-    setLoading(true);
-    const unsub = onSnapshot(
-      collection(db, "home_experience-carousel"),
-      (snapshot) => {
-        let list = [];
-        snapshot.docs.forEach((doc) => {
-          list.push({ id: doc.id, ...doc.data() });
-        });
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(progress);
-        setSlides(list);
-        setLoading(false);
-      },
-      (error) => {
-        console.log(error);
-        setLoading(false);
-      }
-    );
-
-    return () => {
-      unsub();
-    };
+    getData("home_experience-carousel", setSlides, setProgress, setLoading)
   }, []);
 
-  const deleteSlide = async (id) => {
-    console.log("Delete");
-    console.log(id);
-    try {
-      const docRef = doc(db, "home_experience-carousel", id);
-      deleteDoc(docRef)
-        .then(() => {
-          console.log("Entire Document has been deleted successfully.");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  const deleteSlide =  (id: string) => {
+    // console.log("Delete");
+    // console.log(id);
+    // try {
+    //   const docRef = doc(db, "home_experience-carousel", id);
+    //   deleteDoc(docRef)
+    //     .then(() => {
+    //       console.log("Entire Document has been deleted successfully.");
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
 
-      setSlides(slides.filter((slide) => slide.id !== id));
-    } catch (error) {
-      console.log(error);
-    }
+    //   setSlides(slides.filter((slide) => slide.id !== id));
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    deleteData(id, "home_experience-carousel", slides, setSlides)
   };
 
-  const updateHandler = (id) => {
+  const updateHandler = (id: string) => {
     props.setIsUpdate(true);
     props.getUpdatingSlide(id);
   };
