@@ -10,17 +10,13 @@ import { toastNotification } from "../components/Toast/Toast";
 
 export const userRegistration = async (email, password) => {
   try {
-    const res = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await setDoc(doc(db, "users", user.uid), {
       uid: user.uid,
       role: "USER",
       email,
-      password
+      password,
     });
     toastNotification("success", "User successfully created!");
   } catch (err) {
@@ -31,9 +27,8 @@ export const userRegistration = async (email, password) => {
 export const userSignIn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
-      // const user = userCredential.user;
-      // console.log("User successfully login!", user);
+      const user = userCredential.user;
+      console.log("User successfully login!", user);
       toastNotification("success", "User successfully login!");
     })
     .catch((error) => {
@@ -52,11 +47,9 @@ export const userLogOut = async () => {
   }
 };
 
-
 export const getUserInfo = async (user) => {
-  
   const docRef = doc(db, "users", user["uid"]);
-  
+
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {

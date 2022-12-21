@@ -12,6 +12,8 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import ReviewsIcon from '@mui/icons-material/Reviews';
+import LensOutlinedIcon from '@mui/icons-material/LensOutlined';
 import userImg from "../../../assets/user.png"
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
@@ -158,6 +160,32 @@ const Sidebar = () => {
             >
               Pages
             </Typography>
+
+            <Typography
+              variant="h5"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Home
+            </Typography>
+
+            <Item
+              title="Experiences"
+              to="/admin/home-experiences"
+              icon={<LensOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="Testimonials Form"
+              to="/admin/testimonials"
+              icon={<ReviewsIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+
             <Item
               title="Profile Form"
               to="/admin/form"

@@ -16,6 +16,9 @@ import Form from '../admin/scenes/form';
 import Calendar from '../admin/scenes/calendar';
 import FAQ from '../admin/scenes/faq';
 import ProtectedRoute from './ProtectedRoute';
+import Testimonials from '../admin/scenes/testimonials';
+import Experiences from '../admin/pages/home/Experiences/Experiences';
+
 
 
 const AppRoutes = () => {
@@ -48,6 +51,9 @@ const AppRoutes = () => {
                 <Route path="invoices" element={<Invoices />} />
                 <Route path="faq" element={<FAQ />} />
                 <Route path="calendar" element={<Calendar />} />
+                <Route path="testimonials" element={<Testimonials />} />
+                <Route path="home-experiences" element={<Experiences />} />
+  
             </Route>
         </Routes>
     )

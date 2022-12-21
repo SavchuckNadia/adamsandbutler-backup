@@ -80,8 +80,8 @@ export default function CustomizedDialogs(props: ISignUpModal) {
                 <BootstrapDialogTitle id="dialog" onClose={handleClose}>
                     {props.modalTitle}
                 </BootstrapDialogTitle>
-                <p>Sign up to receive luxury travel news, guides and the latest experiences from Adams &amp; Butler.
-                </p>
+                {/* <p>Sign up to receive luxury travel news, guides and the latest experiences from Adams &amp; Butler.
+                </p> */}
                 <DialogContent>
                     {props.children}
                 </DialogContent>

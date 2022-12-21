@@ -11,15 +11,46 @@ import { Link } from "react-router-dom";
 import findOutMoreIcon from "../../assets/svg/find_out_more.svg"
 import { newsList } from "../../data/Home/news";
 import { destinationsList } from "../../data/Home/destinations";
-import { carouselExperienceOptions, carouselExperienceSlides } from "../../data/carousel/carousel-experience";
+import { carouselExperienceOptions } from "../../data/carousel/carousel-experience";
 import ClientsSay from "../../components/ClientsSay/ClientsSay";
 import SignUp from "../../components/SignUp/SignUp";
-import AlertDialogSlide from "../../components/Modal/Modal";
-
+import { useEffect, useState } from "react";
+import {IExperienceSlide} from "../../interfaces/IExperienceSlide"
+import { getData } from "../../services/data";
 
 
 
 export default function Home() {
+const [experienceSlides, setExperienceSlides] = useState(Array<IExperienceSlide>)
+
+// Replace in separate file
+
+// useEffect(() => {
+//   const unsub = onSnapshot(
+//     collection(db, "home_experience-carousel"),
+//     (snapshot) => {
+//       let list:Array<IExperienceSlide> = [];
+//       snapshot.docs.forEach((doc) => {
+        
+//         list.push({ id: doc.id, ...doc.data() } as IExperienceSlide);
+//       });
+//       setExperienceSlides(list);
+//     },
+//     (error) => {
+//       console.log(error);
+//     }
+//   );
+
+//   return () => {
+//     unsub();
+//   };
+// }, []);
+
+
+useEffect(() => {
+getData("home_experience-carousel",setExperienceSlides, setExperienceSlides)
+}, [])
+
   return (
     <main>
       <div className={styles.wrapper}>
@@ -92,7 +123,9 @@ export default function Home() {
 
           <div className={styles.wrap_carousel}>
             <div className={styles.wrap_inner_carousel}>
-              <Carousel options={carouselExperienceOptions} type="experience" slides={carouselExperienceSlides} />
+              <Carousel options={carouselExperienceOptions} type="experience" 
+              slides={experienceSlides}     
+              />
             </div>
           </div>
         </section>

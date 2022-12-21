@@ -254,11 +254,16 @@
     letter-spacing: .15rem;
     pointer-events: all;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1001;
     width: auto;
     height: 44px;
     transform: translate(-40%, -75%) rotate(90deg);
     position: fixed;
+
+    &:hover{
+        color: var(--text-primary-light);
+        cursor: pointer;
+    }
 }
 
 .sidebar_btn.logout_btn {

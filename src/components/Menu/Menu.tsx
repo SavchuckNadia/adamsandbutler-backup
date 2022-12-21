@@ -13,29 +13,25 @@ import CustomLink from "../CustomLink";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 import { linksData } from "../../data/links";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 
 export default function Menu() {
-  window.onscroll = function () {
-    scrollFunction();
-  };
 
-  function scrollFunction() {
-    const navbar =  document.querySelector("#navbar") as HTMLElement
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      navbar.style.top = "0";
-    } else {
-      navbar.style.top = "-122px";
-    }
+  function classNames(...classes: any[]) {
+    return classes.filter(Boolean).join(' ')
   }
+
+  const scrollPosition = useScrollPosition()
+
 
   return (
     <>
       <header className={styles.header}>
         {/* fixed */}
-        <div id="navbar" className={`${styles.container_fixed_nav}`}>
+        <div id="navbar"
+          className={classNames(
+            scrollPosition > 20 ? `${styles.showUp}` : `${styles.hide}`, `${styles.container_fixed_nav}`
+          )}>
           <Link to="/" className={styles.nav_link}>
             <img src={LogoDarkImg} alt="Logo" className={styles.logo} />
           </Link>
@@ -72,7 +68,10 @@ export default function Menu() {
         </div>
 
         {/* not fixed */}
-        <div id="navbar" className={`${styles.container_not_fixed_nav}`}>
+        <div id="navbar"
+          className={classNames(
+            scrollPosition > 20 ? `${styles.hide}` : `${styles.showUp}`, `${styles.container_not_fixed_nav}`
+          )}>
           <Link to="/">
             <img src={LogoImg} alt="Logo" className={styles.logo} />
           </Link>
@@ -141,9 +140,6 @@ export default function Menu() {
           </div>
         </div>
       </header>
-      {/* <div className="nav-overlay-mobile">
-        <div className="wrap-nav-mobile"></div>
-      </div> */}
     </>
   );
 }

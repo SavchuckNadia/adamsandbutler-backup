@@ -10,13 +10,15 @@ import PersonOutlined from "@mui/icons-material/PersonOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 import { useUserAuth } from "../../../context/auth/UserAuthContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
 const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
   const { logOut } = useUserAuth();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
@@ -25,6 +27,10 @@ const Topbar = () => {
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const toHomePage = () => {
+    navigate("/");
   };
 
   return (
@@ -61,6 +67,10 @@ const Topbar = () => {
         </IconButton>
         <IconButton onClick={handleLogout}>
           <LogoutIcon />
+        </IconButton>
+
+        <IconButton onClick={toHomePage}>
+          <HomeIcon />
         </IconButton>
       </Box>
     </Box>

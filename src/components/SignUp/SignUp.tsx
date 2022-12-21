@@ -72,6 +72,8 @@ const SignUp = () => {
                 <div className={styles.wrap_text}>
                     <div className={styles.signup_band_text}>{signUpText}:
                         <AlertDialogSlide btnTitle={" Sign up to our Newsletter"} modalTitle={signUpText}>
+                            <p>Sign up to receive luxury travel news, guides and the latest experiences from Adams &amp; Butler.
+                            </p>
 
                             <form className={styles.sign_up_form} onSubmit={handleSubmit}>
 

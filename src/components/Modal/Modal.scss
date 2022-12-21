@@ -84,3 +84,20 @@ h2.css-140puxv-MuiTypography-root-MuiDialogTitle-root {
 h2.css-140puxv-MuiTypography-root-MuiDialogTitle-root {
     margin-bottom: 1em;
 }
+
+
+
+.css-3h04v3-MuiButtonBase-root-MuiIconButton-root,
+.css-8g0vn4-MuiButtonBase-root-MuiIconButton-root {
+    display: none !important;
+}
+
+.css-1qxadfk-MuiPaper-root-MuiDialog-paper {
+    width: 100%;
+    padding: 79px 30px 40px;
+
+    .close-enquiry,
+    h2 {
+        color: white;
+    }
+}

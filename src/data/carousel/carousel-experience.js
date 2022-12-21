@@ -42,7 +42,7 @@ export const carouselExperienceSlides = [
   },
   {
     id: "6",
-    link: "https://www.adamsandbutler.com/experiences/gay-ireland//",
+    link: "https://www.adamsandbutler.com/experiences/gay-ireland/",
     img: Img6,
     info: "Gay Ireland",
   },

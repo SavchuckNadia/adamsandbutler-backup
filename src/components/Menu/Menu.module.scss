@@ -40,7 +40,7 @@ a .logo {
 
 }
 
-.nav_link:hover{
+.nav_link:hover {
     color: var(--text-primary-light);
 }
 
@@ -313,4 +313,12 @@ li.active a {
     .container_fixed_mobile_nav {
         display: flex;
     }
+}
+
+.hide {
+    top: -122px;
+}
+
+.showUp {
+    top: 0;
 }
