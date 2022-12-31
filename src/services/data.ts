@@ -10,7 +10,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { db, storage } from "../firebase";
 import { toastNotification } from "../components/Toast/Toast";
 
-export const getData = (
+export const getData = async(
   collectionName: string,
   setCollection: any,
   setProgress?: any,

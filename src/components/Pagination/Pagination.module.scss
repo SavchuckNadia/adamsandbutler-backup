@@ -1,0 +1,45 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+
+.wrap-pagination {
+    @include mixins.flex(row, center, center);
+    padding: 55px 0 85px;
+    text-align: center;
+    font-family: var(--primary-font-thin);
+    font-weight: 300;
+
+    @media only screen and (min-width: 769px) {
+        padding: 115px 0 145px;
+    }
+}
+
+.prev-page {
+    margin-right: 45px;
+    width: auto;
+    padding: 10px 20px;
+}
+
+.page {
+    height: 56px;
+    width: 56px;
+    @include mixins.font-size(14px);
+    padding: 10px;
+    line-height: 40px;
+    transition: all .2s cubic-bezier(.45, 0, .55, 1);
+    margin-right: 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.page.active {
+    font-weight: 300;
+    padding: 10px;
+    color: var(--text-primary-light);
+    background-color: var(--text-primary-dark);
+}
+
+.next-page {
+    margin-left: 45px;
+    width: auto;
+    padding: 10px 20px;
+}

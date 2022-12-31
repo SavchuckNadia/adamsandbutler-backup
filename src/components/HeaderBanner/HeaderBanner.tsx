@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 import styles from "./HeaderBanner.module.scss";
 import ArrowIcon from "../../assets/svg/arrow.svg";
 import HeroImg from "../../assets/img/home/hero_home_image.jpeg";
@@ -21,12 +21,20 @@ export default function HeaderBanner() {
     }
   };
 
-  useEffect(() => {
+  const location = useLocation();
+  const homeRoute = location.pathname.endsWith('/')
 
-  }, [user, isAdmin])
+  useEffect(() => {
+    console.log('homeRoute', homeRoute);
+
+  }, [homeRoute])
+
+
 
   return (
     <>
+    
+    { homeRoute && <>
       <div className={styles.wrapper}>
         <section className={styles.hero_home}>
           <div
@@ -131,6 +139,8 @@ export default function HeaderBanner() {
 
       {isAdmin && <Link to='/admin' className={`${styles.sidebar_btn} ${styles.admin_btn}`}>Admin</Link>
       }
+    </>}
+    
     </>
   );
 }
